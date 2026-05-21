@@ -11,7 +11,7 @@
         {"name": "赞助", "url": "http://www.wentianplay.cn/"},
         {"name": "导航", "url": "http://www.wentianplay.net/"},
         {"name": "公告栏", "url": "http://www.wentianplay.top/"},
-        {"name": "🍼", "url": "http://dns.wentianplays.com/"},
+        {"name": "🍼", "url": "http://api.wentianplays.com/api/web/dns.html"},
         {"name": "品牌", "url": "http://www.wentianwan.com/"},
         {"name": "产品", "url": "http://www.wentianwan.cn/"},
         {"name": "天彬*官网", "url": "http://www.tianbin.net/"},
