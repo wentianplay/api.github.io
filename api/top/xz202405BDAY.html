@@ -1,1 +1,423 @@
- 
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>生日倒计时 | 2024级5班</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', sans-serif; background: #f8f9fa; color: #333; min-height: 100vh; transition: all 0.3s; padding: 10px; }
+        .dark-mode { background: #121212; color: #e0e0e0; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { padding: 15px 0; text-align: center; border-bottom: 1px solid #ddd; margin-bottom: 20px; position: relative; }
+        .dark-mode .header { border-color: #444; }
+        .header h1 { font-size: 1.8rem; color: #2c3e50; margin-bottom: 5px; }
+        .dark-mode .header h1 { color: #64b5f6; }
+        .theme-switch { position: absolute; top: 20px; right: 20px; background: #3498db; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; }
+        .dark-mode .theme-switch { background: #64b5f6; }
+        .current-time { text-align: center; font-size: 1.2rem; padding: 10px; background: #e8f4fc; border-radius: 10px; margin: 15px 0; }
+        .dark-mode .current-time { background: #2c3e50; }
+        .countdown-container { margin-bottom: 25px; }
+        .countdown-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .dark-mode .countdown-card { background: #1e1e1e; }
+        .countdown-card h2 { color: #2c3e50; margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #3498db; padding-bottom: 8px; }
+        .dark-mode .countdown-card h2 { color: #64b5f6; }
+        .countdown-item { padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 12px; }
+        .dark-mode .countdown-item { border-color: #444; }
+        .countdown-item:last-child { margin-bottom: 0; }
+        .countdown-header { display: flex; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 5px; }
+        .countdown-name { font-weight: bold; font-size: 1.1rem; color: #2c3e50; }
+        .dark-mode .countdown-name { color: #bb86fc; }
+        .countdown-time { font-size: 1.3rem; color: #e74c3c; font-weight: bold; white-space: nowrap; }
+        .countdown-info { display: flex; justify-content: space-between; font-size: 0.9rem; color: #666; margin-top: 8px; flex-wrap: wrap; gap: 5px; }
+        .dark-mode .countdown-info { color: #aaa; }
+        .bless-tag { background: #ffeaa7; color: #2d3436; padding: 2px 10px; border-radius: 20px; font-size: 0.85rem; display: inline-block; margin-top: 4px; }
+        .dark-mode .bless-tag { background: #5f4b32; color: #f0e6d2; }
+        .main-content { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .main-content { grid-template-columns: 1fr 1fr; } }
+        .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .dark-mode .card { background: #1e1e1e; }
+        .card h2 { color: #2c3e50; margin-bottom: 15px; font-size: 1.3rem; border-bottom: 2px solid #2ecc71; padding-bottom: 6px; }
+        .dark-mode .card h2 { color: #4caf50; }
+        .search-box { margin-bottom: 20px; }
+        .search-box input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; }
+        .dark-mode .search-box input { background: #2c2c2c; border-color: #555; color: #fff; }
+        .students-list { max-height: 400px; overflow-y: auto; }
+        .student-item { padding: 12px; border: 1px solid #eee; border-radius: 6px; margin-bottom: 8px; cursor: pointer; }
+        .dark-mode .student-item { border-color: #444; }
+        .student-item:hover { background: #f5f5f5; }
+        .dark-mode .student-item:hover { background: #2a2a2a; }
+        .student-item.active { background: #e3f2fd; border-color: #2196f3; }
+        .dark-mode .student-item.active { background: #1a237e; }
+        .student-name { font-weight: bold; margin-bottom: 4px; }
+        .student-info { font-size: 0.9rem; color: #666; }
+        .dark-mode .student-info { color: #aaa; }
+        .bless-badge { background: #2ecc71; color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 12px; margin-left: 8px; }
+        .verification-box { padding: 20px; background: #f9f9f9; border-radius: 8px; margin-bottom: 20px; }
+        .dark-mode .verification-box { background: #2c2c2c; }
+        .input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+        @media (max-width: 480px) { .input-group { grid-template-columns: 1fr; } }
+        .input-group input { padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95rem; }
+        .dark-mode .input-group input { background: #333; border-color: #555; color: #fff; }
+        .verify-btn { width: 100%; padding: 12px; background: #2ecc71; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        .verify-btn:hover { background: #27ae60; }
+        .result-box { margin-top: 20px; padding: 20px; background: #e8f5e8; border-radius: 8px; display: none; }
+        .dark-mode .result-box { background: #1b5e20; }
+        .result-box.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .result-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #ccc; }
+        .dark-mode .result-item { border-color: #555; }
+        .result-item:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+        .result-label { color: #666; font-size: 0.9rem; margin-bottom: 3px; }
+        .dark-mode .result-label { color: #aaa; }
+        .result-value { font-weight: bold; color: #2c3e50; }
+        .dark-mode .result-value { color: #fff; }
+        .error { color: #e74c3c; font-size: 0.9rem; margin-top: 8px; display: none; }
+        .error.active { display: block; }
+        .time-display { font-family: monospace; font-size: 1.1rem; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎂 生日倒计时 · 2024级5班</h1>
+            <div id="currentTime" class="current-time"></div>
+            <button class="theme-switch" id="themeSwitch">🌙 夜间模式</button>
+        </div>
+
+        <div class="countdown-container">
+            <div class="countdown-card">
+                <h2>⏳ 最近生日 · 倒计时</h2>
+                <div id="topCountdowns"></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2>👥 学生列表 · 生肖祝福</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="输入姓名搜索...">
+                </div>
+                <div class="students-list" id="studentsList">
+                    <div style="text-align:center;padding:20px;color:#666">加载中...</div>
+                </div>
+            </div>
+            <div class="card">
+                <h2>🔐 信息验证</h2>
+                <div class="verification-box">
+                    <div class="input-group">
+                        <input type="text" id="studentName" placeholder="点击左侧选择学生" readonly>
+                        <input type="text" id="idLastFour" placeholder="验证码后4位" maxlength="4">
+                    </div>
+                    <button class="verify-btn" id="verifyBtn">验证身份</button>
+                    <div class="error" id="errorMsg"></div>
+                </div>
+                <div class="result-box" id="resultBox">
+                    <div class="result-item">
+                        <div class="result-label">姓名</div>
+                        <div class="result-value" id="resultName">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">身份证号</div>
+                        <div class="result-value" id="resultId">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">性别</div>
+                        <div class="result-value" id="resultGender">-</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">家庭住址</div>
+                        <div class="result-value" id="resultAddress">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            let students = [];
+            let selectedStudent = null;
+            let isDarkMode = false;
+
+            // 获取当前北京时间
+            function getBeijingTime() {
+                const now = new Date();
+                return new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Shanghai' }));
+            }
+
+            // 更新时间显示
+            function updateTime() {
+                const beijingTime = getBeijingTime();
+                const dateStr = beijingTime.toLocaleDateString('zh-CN', { 
+                    year: 'numeric', 
+                    month: '2-digit', 
+                    day: '2-digit',
+                    weekday: 'long'
+                });
+                const timeStr = beijingTime.toLocaleTimeString('zh-CN', { hour12: false });
+                document.getElementById('currentTime').innerHTML = `📅 ${dateStr} 🕐 ${timeStr}`;
+            }
+
+            // 格式化身份证显示
+            function formatId(id) {
+                return id ? `${id.substring(0,6)}********${id.substring(14)}` : '-';
+            }
+
+            // 从身份证提取生日
+            function getBirthday(id) {
+                if (!id || id.length < 14) return '2000-01-01';
+                return `${id.substring(6,10)}-${id.substring(10,12)}-${id.substring(12,14)}`;
+            }
+
+            // 计算倒计时（使用北京时间）
+            function getCountdown(birthStr) {
+                const beijingNow = getBeijingTime();
+                const today = new Date(beijingNow.getFullYear(), beijingNow.getMonth(), beijingNow.getDate());
+
+                // 解析生日
+                const birth = new Date(birthStr);
+                const birthThisYear = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
+
+                // 如果今年生日已过，计算明年生日
+                if (birthThisYear < today) {
+                    birthThisYear.setFullYear(today.getFullYear() + 1);
+                }
+
+                const diffMs = birthThisYear - beijingNow;
+
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+                return { days, hours, minutes, seconds, totalMs: diffMs };
+            }
+
+            // 获取生肖
+            function getZodiac(year) {
+                const zodiacs = ['猴', '鸡', '狗', '猪', '鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊'];
+                return zodiacs[year % 12] || '?';
+            }
+
+            // 获取生肖祝福语
+            function getBlessingByZodiac(zodiac) {
+                const map = {
+                    '鼠': '机敏灵巧，岁月丰盈',
+                    '牛': '勤勉踏实，厚德载物',
+                    '虎': '虎虎生威，前程似锦',
+                    '兔': '温柔聪慧，步步登高',
+                    '龙': '神龙昂首，万事顺遂',
+                    '蛇': '睿智从容，福泽绵长',
+                    '马': '自由奔放，马到成功',
+                    '羊': '温良和乐，三阳开泰',
+                    '猴': '机智敏捷，心想事成',
+                    '鸡': '金鸡报晓，朝气蓬勃',
+                    '狗': '忠诚守护，平安喜乐',
+                    '猪': '敦厚淳朴，诸事圆满'
+                };
+                return map[zodiac] || '生日快乐，万事如意';
+            }
+
+            // 渲染学生列表
+            function renderStudents(filter = '') {
+                const container = document.getElementById('studentsList');
+                if (!students.length) {
+                    container.innerHTML = '<div style="text-align:center;padding:20px;color:#666">数据加载中...</div>';
+                    return;
+                }
+
+                const filtered = students.filter(s => 
+                    s.name.includes(filter) || s.idNumber.includes(filter)
+                );
+
+                if (!filtered.length) {
+                    container.innerHTML = '<div style="text-align:center;padding:20px;color:#666">未找到匹配的学生</div>';
+                    return;
+                }
+
+                container.innerHTML = '';
+
+                filtered.forEach(s => {
+                    const div = document.createElement('div');
+                    div.className = 'student-item' + (selectedStudent && selectedStudent.id === s.id ? ' active' : '');
+                    const birth = getBirthday(s.idNumber);
+                    const year = parseInt(birth.substring(0, 4));
+                    const zodiac = getZodiac(year);
+                    const blessing = getBlessingByZodiac(zodiac);
+
+                    div.innerHTML = `
+                        <div class="student-name">${s.name} (${s.gender}) <span class="bless-badge">${zodiac}</span></div>
+                        <div class="student-info">生日: ${birth} | 🎁 ${blessing}</div>
+                    `;
+
+                    div.onclick = () => {
+                        document.querySelectorAll('.student-item').forEach(e => e.classList.remove('active'));
+                        div.classList.add('active');
+                        selectedStudent = s;
+                        document.getElementById('studentName').value = s.name;
+                        document.getElementById('idLastFour').value = '';
+                        document.getElementById('resultBox').classList.remove('active');
+                        document.getElementById('errorMsg').classList.remove('active');
+                    };
+
+                    container.appendChild(div);
+                });
+            }
+
+            // 更新倒计时列表
+            function updateAllCountdowns() {
+                const beijingNow = getBeijingTime();
+
+                if (!students.length) return;
+
+                // 获取今天日期字符串（YYYY-MM-DD）
+                const todayStr = `${beijingNow.getFullYear()}-${(beijingNow.getMonth() + 1).toString().padStart(2, '0')}-${beijingNow.getDate().toString().padStart(2, '0')}`;
+
+                let nearest = students.map(s => {
+                    const birth = getBirthday(s.idNumber);
+                    const birthYear = parseInt(birth.substring(0, 4));
+                    const age = beijingNow.getFullYear() - birthYear;
+
+                    // 计算今年生日日期
+                    const birthThisYear = `${beijingNow.getFullYear()}-${birth.substring(5, 7)}-${birth.substring(8, 10)}`;
+                    const isBirthdayToday = birthThisYear === todayStr;
+
+                    // 计算倒计时
+                    let cd = { days: 0, hours: 0, minutes: 0, seconds: 0, totalMs: 0 };
+                    if (!isBirthdayToday) {
+                        // 如果不是生日当天，计算到下个生日的倒计时
+                        cd = getCountdown(birth);
+                    }
+
+                    return { ...s, birth, cd, age, isBirthdayToday, birthThisYear };
+                })
+                .filter(item => {
+                    // 只显示生日当天或未来生日的同学
+                    // 生日当天显示，第二天0:00:00自动移除
+                    return item.isBirthdayToday || item.cd.totalMs > 0;
+                })
+                .sort((a, b) => {
+                    // 生日当天排在最前面
+                    if (a.isBirthdayToday && !b.isBirthdayToday) return -1;
+                    if (!a.isBirthdayToday && b.isBirthdayToday) return 1;
+                    // 其他按倒计时从短到长排序
+                    return a.cd.totalMs - b.cd.totalMs;
+                })
+                .slice(0, 10);
+
+                const container = document.getElementById('topCountdowns');
+                if (!container) return;
+
+                if (!nearest.length) {
+                    container.innerHTML = '<div style="text-align:center;padding:20px;color:#666">暂无生日数据</div>';
+                    return;
+                }
+
+                container.innerHTML = '';
+
+                nearest.forEach(s => {
+                    const div = document.createElement('div');
+                    div.className = 'countdown-item';
+                    const year = parseInt(s.birth.substring(0, 4));
+                    const zodiac = getZodiac(year);
+                    const blessing = getBlessingByZodiac(zodiac);
+
+                    let timeDisplay = '';
+                    if (s.isBirthdayToday) {
+                        timeDisplay = '<span style="color:#e74c3c;font-size:1.4rem;">🎂 今天生日！🎂</span>';
+                    } else {
+                        timeDisplay = `${s.cd.days}天${s.cd.hours}时${s.cd.minutes}分${s.cd.seconds}秒`;
+                    }
+
+                    div.innerHTML = `
+                        <div class="countdown-header">
+                            <div class="countdown-name">${s.name} (${s.gender}) · ${zodiac}</div>
+                            <div class="countdown-time">${timeDisplay}</div>
+                        </div>
+                        <div class="countdown-info">
+                            <div>🎂 ${s.birth} (${s.age}岁)</div>
+                            <div class="bless-tag">✨ ${blessing}</div>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            // 加载数据
+            async function loadData() {
+                try {
+                    const res = await fetch('https://api.wentianplay.com/api/top/xz202405BDAY.json');
+                    students = await res.json();
+                    renderStudents();
+                    updateAllCountdowns();
+                    setInterval(updateAllCountdowns, 1000);
+                } catch(e) {
+                    console.error('加载失败:', e);
+                    document.getElementById('studentsList').innerHTML = '<div style="text-align:center;padding:20px;color:#e74c3c">数据加载失败，请检查网络</div>';
+                }
+            }
+
+            // 验证身份
+            function verify() {
+                const err = document.getElementById('errorMsg');
+                err.classList.remove('active');
+
+                if (!selectedStudent) {
+                    err.textContent = '请先选择学生';
+                    err.classList.add('active');
+                    return;
+                }
+
+                const input = document.getElementById('idLastFour').value.trim();
+                if (!input || input.length !== 4) {
+                    err.textContent = '请输入身份证后4位';
+                    err.classList.add('active');
+                    return;
+                }
+
+                if (input !== selectedStudent.idNumber.slice(-4)) {
+                    err.textContent = '身份证后四位错误';
+                    err.classList.add('active');
+                    return;
+                }
+
+                document.getElementById('resultName').textContent = selectedStudent.name;
+                document.getElementById('resultId').textContent = formatId(selectedStudent.idNumber);
+                document.getElementById('resultGender').textContent = selectedStudent.gender;
+                document.getElementById('resultAddress').textContent = selectedStudent.address;
+                document.getElementById('resultBox').classList.add('active');
+            }
+
+            // 切换主题
+            function toggleTheme() {
+                isDarkMode = !isDarkMode;
+                document.body.classList.toggle('dark-mode', isDarkMode);
+                document.getElementById('themeSwitch').textContent = isDarkMode ? '☀️ 日间模式' : '🌙 夜间模式';
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            }
+
+            // 页面加载完成
+            document.addEventListener('DOMContentLoaded', () => {
+                isDarkMode = localStorage.getItem('theme') === 'dark';
+                document.body.classList.toggle('dark-mode', isDarkMode);
+                document.getElementById('themeSwitch').textContent = isDarkMode ? '☀️ 日间模式' : '🌙 夜间模式';
+
+                updateTime();
+                setInterval(updateTime, 1000);
+
+                loadData();
+
+                document.getElementById('searchInput').oninput = (e) => renderStudents(e.target.value);
+                document.getElementById('verifyBtn').onclick = verify;
+                document.getElementById('idLastFour').onkeypress = (e) => e.key === 'Enter' && verify();
+                document.getElementById('themeSwitch').onclick = toggleTheme;
+            });
+        })();
+    </script>
+</body>
+</html>
