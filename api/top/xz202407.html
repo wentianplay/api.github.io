@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂随机点名系统 | 2024级7班</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #1976d2;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-container {
+            background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+            border-left: 5px solid #4caf50;
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .quote {
+            font-size: 1.8rem;
+            color: #1b5e20;
+            font-style: italic;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .name-display {
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #90caf9;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .name {
+            font-size: 5.5rem;
+            font-weight: bold;
+            color: #d32f2f;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+            letter-spacing: 1px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 16px 45px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #startBtn {
+            background: linear-gradient(to right, #4caf50, #2e7d32);
+            color: white;
+        }
+
+        #startBtn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 15px rgba(46, 125, 50, 0.4);
+        }
+
+        #resetBtn {
+            background: linear-gradient(to right, #f44336, #d32f2f);
+            color: white;
+        }
+
+        #resetBtn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 15px rgba(211, 47, 47, 0.4);
+        }
+
+        .history {
+            margin-top: 35px;
+            background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .history h3 {
+            color: #1b5e20;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.7rem;
+        }
+
+        .history-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .history-item {
+            background: linear-gradient(to right, #a5d6a7, #81c784);
+            padding: 12px 22px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1b5e20;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pulse {
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.08); }
+        }
+
+        .flash {
+            animation: flash 0.2s;
+        }
+
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 25px;
+            color: #555;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            color: #1976d2;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+                padding: 50px;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+
+            .quote {
+                font-size: 2.2rem;
+            }
+
+            .name {
+                font-size: 6.5rem;
+            }
+
+            .name-display {
+                height: 340px;
+            }
+
+            button {
+                padding: 20px 55px;
+                font-size: 1.7rem;
+            }
+
+            .history h3 {
+                font-size: 2rem;
+            }
+
+            .history-item {
+                font-size: 1.4rem;
+                padding: 15px 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2.3rem;
+            }
+
+            .quote {
+                font-size: 1.3rem;
+            }
+
+            .name {
+                font-size: 3.2rem;
+            }
+
+            .name-display {
+                height: 200px;
+            }
+
+            button {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+            }
+
+            .history h3 {
+                font-size: 1.5rem;
+            }
+
+            .history-item {
+                font-size: 1rem;
+                padding: 10px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .quote {
+                font-size: 1.1rem;
+            }
+
+            .name {
+                font-size: 2.8rem;
+            }
+
+            .name-display {
+                height: 170px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            button {
+                width: 85%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>2024级7班 课堂随机点名系统</h1>
+            <div class="quote-container">
+                <div class="quote" id="quote">制作人:2024级5班飞哥(2185006560)</div>
+            </div>
+        </header>
+
+        <main>
+            <div class="name-display">
+                <div class="name" id="nameDisplay">准备点名</div>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn">开始点名</button>
+                <button id="resetBtn">重置</button>
+            </div>
+
+            <div class="status" id="status">系统就绪</div>
+
+            <div class="history">
+                <h3>点名历史</h3>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </main>
+
+        <div class="copyright">© 2025 文天玩WenTianPlay | <a href="./概率.txt" class="domain-link">概率均为“1”，无黑箱操作。</a></div>
+    </div>
+
+    <script> document.addEventListener("contextmenu", e => e.preventDefault());
+        document.addEventListener("keydown", e => { if (e.key === "F12") e.preventDefault(); });
+        document.addEventListener("copy", e => e.preventDefault());
+
+        const quoteElement = document.getElementById('quote');
+        const nameDisplay = document.getElementById('nameDisplay');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const historyList = document.getElementById('historyList');
+        const statusElement = document.getElementById('status');
+
+        let students = [];
+        let quotes = [];
+        let history = [];
+        let isRolling = false;
+        let rollInterval;
+
+        async function loadData() {
+            try {
+                const studentsResponse = await fetch('https://api.wentianplay.com/api/top/xz202407api.json');
+                students = await studentsResponse.json();
+
+                const quotesResponse = await fetch('https://api.wentianplay.com/api/top/xzapi.json');
+                quotes = await quotesResponse.json();
+
+                rotateQuotes();
+                statusElement.textContent = "数据加载完成，可以开始点名";
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                quoteElement.textContent = "数据加载失败，请检查api.json和API.json文件";
+                statusElement.textContent = "数据加载失败，请检查网络连接和文件路径";
+            }
+        }
+
+        function rotateQuotes() {
+            let currentIndex = 0;
+
+            setInterval(() => {
+                quoteElement.textContent = quotes[currentIndex];
+                currentIndex = (currentIndex + 1) % quotes.length;
+
+                quoteElement.parentElement.classList.add('flash');
+                setTimeout(() => {
+                    quoteElement.parentElement.classList.remove('flash');
+                }, 200);
+            }, 3500);
+        }
+
+        function getRandomStudent() {
+            // 只从概率大于0的学生中选择
+            const availableStudents = students.filter(student => student.probability > 0);
+
+            if (availableStudents.length === 0) {
+                return students[0].name; // 如果没有概率大于0的学生，返回第一个
+            }
+
+            let totalProbability = 0;
+            availableStudents.forEach(student => {
+                totalProbability += student.probability || 1;
+            });
+
+            const random = Math.random() * totalProbability;
+
+            let cumulativeProbability = 0;
+            for (const student of availableStudents) {
+                cumulativeProbability += student.probability || 1;
+                if (random <= cumulativeProbability) {
+                    return student.name;
+                }
+            }
+
+            return availableStudents[0].name;
+        }
+
+        function isStudentInRecentHistory(studentName) {
+            return history.slice(0, 10).includes(studentName);
+        }
+
+        function getUniqueRandomStudent() {
+            if (history.length >= students.length) {
+                statusElement.textContent = "注意：所有学生已被点过名";
+                return getRandomStudent();
+            }
+
+            let studentName;
+            let attempts = 0;
+            const maxAttempts = 100;
+
+            do {
+                studentName = getRandomStudent();
+                attempts++;
+                if (attempts >= maxAttempts) {
+                    statusElement.textContent = "注意：随机选择遇到困难，已返回随机选择";
+                    break;
+                }
+            } while (isStudentInRecentHistory(studentName));
+
+            return studentName;
+        }
+
+        function startRolling() {
+            if (isRolling) return;
+
+            isRolling = true;
+            startBtn.disabled = true;
+            startBtn.textContent = "点名中...";
+            statusElement.textContent = "正在随机选择学生...";
+
+            let count = 0;
+            const maxCount = 7;
+            const totalTime = 3000;
+            const intervalTime = totalTime / maxCount;
+
+            rollInterval = setInterval(() => {
+                nameDisplay.textContent = getRandomStudent();
+                nameDisplay.classList.add('flash');
+
+                setTimeout(() => {
+                    nameDisplay.classList.remove('flash');
+                }, 100);
+
+                count++;
+
+                if (count >= maxCount) {
+                    clearInterval(rollInterval);
+
+                    const finalStudent = getUniqueRandomStudent();
+                    nameDisplay.textContent = finalStudent;
+                    nameDisplay.classList.add('pulse');
+
+                    addToHistory(finalStudent);
+
+                    setTimeout(() => {
+                        isRolling = false;
+                        startBtn.disabled = false;
+                        startBtn.textContent = "开始点名";
+                        nameDisplay.classList.remove('pulse');
+                        statusElement.textContent = `已选中: ${finalStudent}`;
+                    }, 1000);
+                }
+            }, intervalTime);
+        }
+
+        function addToHistory(studentName) {
+            history.unshift(studentName);
+            if (history.length > 10) {
+                history = history.slice(0, 10);
+            }
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            historyList.innerHTML = '';
+
+            history.forEach((student, index) => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.textContent = `${index + 1}. ${student}`;
+                historyList.appendChild(historyItem);
+            });
+        }
+
+        function resetSystem() {
+            if (isRolling) {
+                clearInterval(rollInterval);
+                isRolling = false;
+                startBtn.disabled = false;
+                startBtn.textContent = "开始点名";
+            }
+
+            nameDisplay.textContent = "准备点名";
+            nameDisplay.classList.remove('pulse', 'flash');
+            history = [];
+            updateHistoryDisplay();
+            statusElement.textContent = "系统已重置";
+        }
+
+        startBtn.addEventListener('click', startRolling);
+        resetBtn.addEventListener('click', resetSystem);
+
+        loadData();
+    </script>
+</body>
+</html>
