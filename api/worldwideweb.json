@@ -10,20 +10,20 @@
               }
         ]
     },
-    "CDN web": {
+    "worldwideweb": {
         "icon": "",
         "data": [
             {
-                "name": "web",
+                "name": "文天玩WenTianPlay-API",
                 "icon": "",
                 "url": "https://tianbin.lanzouu.com/b00b4h2ykf",
-                "describe": "文天玩WenTianPlay-API"
+                "describe": "CDN web"
             },
             {
-                "name": "web",
+                "name": "WenTianPlays.com-API",
                 "icon": "",
                 "url": "https://tianbin.lanzouu.com/b00b52cqcf",
-                "describe": "WenTianPlays.com-API"
+                "describe": "CDN web"
              }
         ]
     },
@@ -31,22 +31,22 @@
         "icon": "",
         "data": [
             {
-                "name": "zip",
+                "name": "VPN-Android",
                 "icon": "",
                 "url": "https://api.wentianplays.com/file/zip/lvchaid_502929334.zip",
-                "describe": "VPN-Android"
+                "describe": "CDN zip"
             },
             {
-                "name": "zip",
+                "name": "MC鼠标-Windows",
                 "icon": "",
                 "url": "https://api.wentianplays.com/file/zip/mc.zip",
-                "describe": "MC鼠标-Windows"
+                "describe": "CDN zip"
             },
             {
-                "name": "zip",
+                "name": "手写-Windows",
                 "icon": "",
                 "url": "https://api.wentianplays.com/file/zip/op.zip",
-                "describe": "手写-Windows"
+                "describe": "CDN zip"
               }
         ]
     },
@@ -54,10 +54,10 @@
         "icon": "",
         "data": [
             {
-                "name": "exe",
+                "name": "windows激活-exe",
                 "icon": "",
                 "url": "https://api.wentianplays.com/file/exe/win.exe",
-                "describe": "windows-exe"
+                "describe": "CDN exe"
              }
         ]
     },
@@ -65,10 +65,10 @@
         "icon": "",
         "data": [
             {
-                "name": "crx",
+                "name": "爬站-crx",
                 "icon": "",
                 "url": "https://api.wentianplays.com/file/crx/Save All Resources.crx",
-                "describe": "爬-crx"
+                "describe": "CDN crx"
             }
         ]
     }
