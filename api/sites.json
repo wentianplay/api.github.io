@@ -9,34 +9,16 @@
                 "describe": "文天玩WenTianPlay官方网站"
             },
             {
-                "name": "赞助渠道",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://www.wentianplay.cn",
-                "describe": "文天玩赞助捐款渠道的官方网站"
-            },
-            {
                 "name": "导航网站",
                 "icon": "https://www.wentianplay.net/favicon.ico",
                 "url": "https://www.wentianplay.net",
                 "describe": "文天玩WenTianPlay导航网站"
             },
             {
-                "name": "公告新闻",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://www.wentianplay.top",
-                "describe": "文天玩WenTianPlay公告新闻"
-            },
-            {
-                "name": "品牌网站",
+                "name": "品牌产品",
                 "icon": "https://www.wentianplay.net/favicon.ico",
                 "url": "https://www.wentianwan.com",
-                "describe": "文天玩WenTianPlay品牌网站"
-            },
-            {
-                "name": "产品网站",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://www.wentianwan.cn",
-                "describe": "文天玩WenTianPlay产品网站"
+                "describe": "文天玩WenTianPlay品牌产品"
             },
             {
                 "name": "创始股东",
@@ -52,7 +34,7 @@
             },
             {
                 "name": "《天彬》API",
-                "icon": "https://www.wentianplay.net/favicon.ico",
+                "icon": "https://www.tianbin.net/favicon.ico",
                 "url": "https://bintian.net",
                 "describe": "《天彬TianBIN》框架设定"
             },
@@ -63,28 +45,22 @@
                 "describe": "文天游WenTianYo官方网站"
             },
             {
-                "name": "社区论坛",
+                "name": "公告",
                 "icon": "https://www.wentianyo.com/favicon.ico",
-                "url": "https://www.wentianyo.cn",
-                "describe": "文天游WenTianYo社区论坛"
-            },
-            {
-                "name": "门户网站",
-                "icon": "https://www.wentianplay.net/favicon.ico",
                 "url": "https://www.wentianyou.com",
-                "describe": "文天游WenTianYo门户网站"
-            },
-            {
-                "name": "文学学刊",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://www.wentianyou.cn",
-                "describe": "天彬文学学术期刊"
+                "describe": "公告"
             },
             {
                 "name": "TianBIN",
                 "icon": "https://www.tianbin.net/favicon.ico",
                 "url": "https://tianbin.org",
                 "describe": "TianBIN Official Website"
+            },
+            {
+                "name": "官方权威域名",
+                "icon": "https://www.tianbin.net/favicon.ico",
+                "url": "https://www.wentianplay.com/s/",
+                "describe": "官方权威域名"
             }
         ]
     },
