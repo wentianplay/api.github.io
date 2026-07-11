@@ -7,18 +7,24 @@
                 "icon": "",
                 "url": "https://www.wentianplay.net",
                 "describe": "返回导航"
+            },
+            {
+                "name": "官方权威域名",
+                "icon": "",
+                "url": "https://api.wentianplays.com/S/",
+                "describe": "CDN web"
+            },
+            {
+                "name": "关于我们的官方域名",
+                "icon": "",
+                "url": "https://mp.weixin.qq.com/s/GHPbKc7oHf6NkxRplnsqzg",
+                "describe": "CDN web"
               }
         ]
     },
     "worldwideweb": {
         "icon": "",
         "data": [
-            {
-                "name": "官方域名",
-                "icon": "",
-                "url": "https://api.wentianplays.com/S/",
-                "describe": "CDN web"
-            },
             {
                 "name": "文天玩WenTianPlay-API",
                 "icon": "",
