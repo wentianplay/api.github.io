@@ -18,6 +18,12 @@
                 "icon": "https://furup.me/assets/logo.png",
                 "url": "https://furup.me/",
                 "describe": "FurUp万事屋是中国兽圈(Furry)创作者数据观察公益平台，提供B站福瑞UP主排行、数据增长分析、兽聚活动日历、兽装展示和生日提醒。"
+            },
+            {
+                "name": "赞助渠道",
+                "icon": "https://www.wentianplay.net/favicon.ico",
+                "url": "https://www.wentianplay.cn",
+                "describe": "文天玩赞助捐款渠道的官方网站"
             }
         ]
     }
