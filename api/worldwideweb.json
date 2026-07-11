@@ -14,6 +14,12 @@
         "icon": "",
         "data": [
             {
+                "name": "官方域名",
+                "icon": "",
+                "url": "https://api.wentianplays.com/S/",
+                "describe": "CDN web"
+            },
+            {
                 "name": "文天玩WenTianPlay-API",
                 "icon": "",
                 "url": "https://tianbin.lanzouu.com/b00b4h2ykf",
