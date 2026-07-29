@@ -3,13 +3,7 @@
         "icon": "https://api.wentianplays.com/cdn/index.ico",
       "data": [
         {
-           "name": "权威域名",
-           "icon": "https://api.wentianplays.com/cdn/index.ico",
-            "url": "https://www.wentianplay.com/s/",
-            "describe": "官方权威域名"
-        },
-        {
-            "name": "框架设定",
+           "name": "框架设定",
             "icon": "https://api.wentianplays.com/cdn/index.ico",
             "url": "https://BINTIAN.NET",
             "describe": "不忘初心，逐梦未来。框架设定：BINTIAN.NET"
@@ -21,10 +15,16 @@
             "describe": "不忘初心，逐梦未来。框架设定：BINTIAN.NET"
         },
         {
+           "name": "权威域名",
+           "icon": "https://api.wentianplays.com/cdn/index.ico",
+            "url": "https://api.tianbin.org",
+            "describe": "官方权威域名"
+        },
+        {
             "name": "展开更多...",
             "icon": "https://api.wentianplays.com/cdn/index.ico",
-                "url": "http://www.wentianyou.com/m",
-                "describe": "内部御用导航"
+            "url": "http://www.wentianyou.com/m",
+            "describe": "内部御用导航"
             }
         ]
     },
