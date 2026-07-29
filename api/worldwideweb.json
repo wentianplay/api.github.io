@@ -1,24 +1,60 @@
 {
-    "导航网站": {
-        "icon": "",
+    "官方网站": {
+        "icon": "https://api.wentianplays.com/cdn/index.ico",
         "data": [
             {
-                "name": "返回导航",
-                "icon": "",
-                "url": "https://www.wentianplay.net",
-                "describe": "返回导航"
+                "name": "文天玩官网",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://www.wentianplay.com",
+                "describe": "WenTianPlay.com"
             },
             {
-                "name": "官方权威域名",
-                "icon": "",
-                "url": "https://api.tianbin.org",
-                "describe": "CDN web"
+                "name": "导航网站",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://wentianplay.net",
+                "describe": "WenTianPlay.net"
             },
             {
-                "name": "关于我们的官方域名",
-                "icon": "",
-                "url": "https://mp.weixin.qq.com/s/GHPbKc7oHf6NkxRplnsqzg",
-                "describe": "CDN web"
+                "name": "品牌产品",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://wentianwan.com",
+                "describe": "WenTianWan.com"
+            },
+            {
+                "name": "天彬官网",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://www.tianbin.net",
+                "describe": "TianBIN.net"
+            },
+            {
+                "name": "创始股东",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://wentianplays.com",
+                "describe": "WenTianPlays.com"
+            },
+            {
+                "name": "框架设定",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://BINTIAN.NET",
+                "describe": "BINTIAN.NET"
+            },
+            {
+                "name": "文天游官网",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://www.wentianyo.com",
+                "describe": "WenTianYo.com"
+            },
+            {
+                "name": "公告资讯",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://wentianyou.com",
+                "describe": "WenTianYou.com"
+            },
+            {
+                "name": "导航引流页",
+                "icon": "https://api.wentianplays.com/cdn/index.ico",
+                "url": "https://www.tianbin.org",
+                "describe": "TianBIN.org"
               }
         ]
     },
