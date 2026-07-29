@@ -1,4 +1,0 @@
-# robots.txt for api.wentianplay.com
-User-agent: *
-Allow: /
-Sitemap: https://www.wentianplay.net/sitemap.xml
