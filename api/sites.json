@@ -1,87 +1,28 @@
 {
-    "官方网站": {
-        "icon": "https://www.wentianplay.net/favicon.ico",
-        "data": [
-            {
-                "name": "文天玩官网",
-                "icon": "https://www.wentianplay.com/favicon.ico",
-                "url": "https://www.wentianplay.com",
-                "describe": "文天玩WenTianPlay官方网站"
-            },
-            {
-                "name": "导航网站",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://www.wentianplay.net",
-                "describe": "文天玩WenTianPlay导航网站"
-            },
-            {
-                "name": "品牌产品",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://www.wentianwan.com",
-                "describe": "文天玩WenTianPlay品牌产品"
-            },
-            {
-                "name": "创始股东",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://www.wentianplays.com",
-                "describe": "文天玩WenTianPlay创始股东"
-            },
-            {
-                "name": "《天彬》官网",
-                "icon": "https://www.tianbin.net/favicon.ico",
-                "url": "https://www.tianbin.net",
-                "describe": "《天彬TianBIN》官方网站"
-            },
-            {
-                "name": "《天彬》API",
-                "icon": "https://www.tianbin.net/favicon.ico",
-                "url": "https://bintian.net",
-                "describe": "《天彬TianBIN》框架设定"
-            },
-            {
-                "name": "文天游官网",
-                "icon": "https://www.wentianyo.com/favicon.ico",
-                "url": "https://www.wentianyo.com",
-                "describe": "文天游WenTianYo官方网站"
-            },
-            {
-                "name": "公告",
-                "icon": "https://www.wentianyo.com/favicon.ico",
-                "url": "https://www.wentianyou.com",
-                "describe": "公告"
-            },
-            {
-                "name": "TianBIN",
-                "icon": "https://www.tianbin.net/favicon.ico",
-                "url": "https://tianbin.org",
-                "describe": "TianBIN Official Website"
-            },
-            {
-                "name": "官方权威域名",
-                "icon": "https://www.tianbin.net/favicon.ico",
-                "url": "https://www.wentianplay.com/s/",
-                "describe": "官方权威域名"
-            }
-        ]
-    },
     "官方导航": {
-        "icon": "https://www.wentianplay.net/favicon.ico",
-        "data": [
-            {
-                "name": "官方群聊",
-                "icon": "https://www.wentianplay.net/favicon.ico",
-                "url": "https://official.wentianplay.com/index/",
-                "describe": "天彬TianBIN官方群聊"
-            },
-            {
-                "name": "《天彬》",
-                "icon": "https://bookcover.yuewen.com/qdbimg/349573/1041003789/600.webp",
-                "url": "https://www.qidian.com/book/1041003789",
-                "describe": "不忘初心，逐梦未来。框架设定：BINTIAN.NET"
-            },
-            {
-                "name": "展开更多...",
-                "icon": "https://www.wentianplay.net/favicon.ico",
+        "icon": "https://api.wentianplays.com/cdn/index.ico",
+      "data": [
+        {
+           "name": "权威域名",
+           "icon": "https://api.wentianplays.com/cdn/index.ico",
+            "url": "https://www.wentianplay.com/s/",
+            "describe": "官方权威域名"
+        },
+        {
+            "name": "框架设定",
+            "icon": "https://api.wentianplays.com/cdn/index.ico",
+            "url": "https://BINTIAN.NET",
+            "describe": "不忘初心，逐梦未来。框架设定：BINTIAN.NET"
+        },
+        {
+            "name": "《天彬》小说",
+            "icon": "https://bookcover.yuewen.com/qdbimg/349573/1041003789/600.webp",
+            "url": "https://www.qidian.com/book/1041003789",
+            "describe": "不忘初心，逐梦未来。框架设定：BINTIAN.NET"
+        },
+        {
+            "name": "展开更多...",
+            "icon": "https://api.wentianplays.com/cdn/index.ico",
                 "url": "http://www.wentianyou.com/",
                 "describe": "内部御用导航"
             }
