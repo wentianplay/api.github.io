@@ -22,8 +22,8 @@
         },
         {
             "name": "展开更多...",
-            "icon": "https://api.wentianplays.com/cdn/index.ico",
-            "url": "http://www.wentianyou.com/m",
+            "icon": "https://api.wentianplays.com/favicon.ico",
+            "url": "https://api.wentianplays.com/web/",
             "describe": "内部御用导航"
             }
         ]
