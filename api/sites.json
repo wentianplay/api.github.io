@@ -19,12 +19,6 @@
            "icon": "https://api.wentianplays.com/cdn/index.ico",
             "url": "https://api.tianbin.org",
             "describe": "官方权威域名"
-        },
-        {
-            "name": "展开更多...",
-            "icon": "https://api.wentianplays.com/favicon.ico",
-            "url": "https://api.wentianplays.com/web/",
-            "describe": "内部御用导航"
             }
         ]
     },
@@ -46,13 +40,13 @@
             {
                 "name": "抖音",
                 "icon": "https://lf1-cdn-tos.bytegoofy.com/goofy/ies/douyin_web/public/favicon.ico",
-                "url": "https://www.douyin.com/",
+                "url": "https://www.douyin.com/?recommend=1&from_nav=1",
                 "describe": "抖音让每一个人看见并连接更大的世界，鼓励表达、沟通和记录，激发创造，丰富人们的精神世界，让现实生活更美好。"
             },
             {
                 "name": "快手",
                 "icon": "https://m.kuaishou.com/favicon.ico",
-                "url": "https://www.kuaishou.com/",
+                "url": "https://www.kuaishou.com/new-reco",
                 "describe": "快手是一款国民级短视频App。在快手，了解真实的世界，认识有趣的人，也可以记录真实而有趣的自己。快手，拥抱每一种 ..."
             },
             {
