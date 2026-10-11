@@ -117,7 +117,7 @@ function showFullscreen(c) {
     if (!box || !q) return false;
     var text = payloadOf(c);
     try {
-        q.src = QRCode.generatePNG(text, { margin: 0, ecclevel: "M", modulesize: 8 });
+        q.src = QRCode.generatePNG(text, { margin: 0, ecclevel: "M", modulesize: 10 });
     } catch (e) {
         return false;
     }
@@ -126,17 +126,16 @@ function showFullscreen(c) {
     var tt = document.getElementById("qf-title");
     var tp = document.getElementById("qf-tip");
     if (lg) { lg.src = logoOf(c); lg.alt = nameOf(c); }
-    if (tt) tt.textContent = nameOf(c);
-    if (tp) tp.textContent = tipOf(c) + " · 长按可保存或识别";
+    if (tt) { tt.textContent = nameOf(c); tt.style.color = ""; }
+    if (tp) { tp.textContent = tipOf(c) + " · 长按可保存或识别"; tp.style.color = ""; }
     var bg = colorOf(c);
-    if (bg) box.style.backgroundColor = bg;
-    if (tt) tt.style.color = "#fff";
-    if (tp) tp.style.color = "rgba(255,255,255,.85)";
+    box.style.backgroundColor = bg || "";
     var icon = box.querySelector(".qf-icon");
-    if (icon) icon.style.backgroundColor = "#fff";
+    if (icon) icon.style.backgroundColor = "";
     var wrap = box.querySelector(".qf-qrwrap");
-    if (wrap) wrap.style.backgroundColor = "#fff";
+    if (wrap) wrap.style.backgroundColor = "";
     showView("qrfs");
+    setBar("显示所有付款渠道", "toall");
     window.scrollTo(0, 0);
     return true;
 }
@@ -207,13 +206,19 @@ function render() {
     if (barBtn) {
         barBtn.addEventListener("click", function () {
             if (barBtn.getAttribute("data-mode") === "back") {
-                if (location.hash === "#all") {
+                try {
                     history.replaceState(null, "", location.pathname + location.search);
+                } catch (e) {
+                    try { location.hash = ""; } catch (e2) {}
                 }
+                if (location.hash === "#all") { try { location.hash = ""; } catch (e3) {} }
                 render();
+                return;
+            }
+            if (location.hash !== "#all") {
+                try { location.hash = "#all"; } catch (e) { render(); }
             } else {
-                if (location.hash !== "#all") location.hash = "#all";
-                else render();
+                render();
             }
         });
     }
