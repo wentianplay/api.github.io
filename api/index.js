@@ -13,7 +13,7 @@ var setting = {
 var channels = [
     { key: "alipay", dom: "code-alipay", qr: "qr-alipay", value: setting.aliUrl,     uri: false,       redirect: true },
     { key: "wechat", dom: "code-wechat", qr: "qr-wechat", value: setting.wechatUrl,  uri: false,       redirect: false },
-    { key: "qq",     dom: "code-qq",     qr: "qr-qq",     value: setting.qqUrl,      uri: false,       redirect: true },
+    { key: "qq",     dom: "code-qq",     qr: "qr-qq",     value: setting.qqUrl,      uri: false,       redirect: false },
     { key: "paypal", dom: "code-paypal", qr: "qr-paypal", value: setting.paypalUrl,  uri: false,       redirect: false },
     { key: "venmo",  dom: "code-venmo",  qr: "qr-venmo",  value: setting.venmoUrl,   uri: false,       redirect: false },
     { key: "kofi",   dom: "code-kofi",   qr: "qr-kofi",   value: setting.kofiUrl,    uri: false,       redirect: false },
