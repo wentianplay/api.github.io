@@ -81,16 +81,16 @@ function showFallback() {
     showView("fallback");
 }
 function logoOf(c) {
-    var img = document.querySelector("#" + c.dom + " .code-header img");
+    var img = document.querySelector("#" + c.dom + " .card-bottom img");
     return img && img.getAttribute("src") ? img.getAttribute("src") : "/cdn/" + c.key + "-logo.svg";
 }
 function nameOf(c) {
-    var img = document.querySelector("#" + c.dom + " .code-header img");
+    var img = document.querySelector("#" + c.dom + " .card-bottom img");
     return img && img.getAttribute("alt") ? img.getAttribute("alt") : c.key;
 }
 function tipOf(c) {
-    var f = document.querySelector("#" + c.dom + " .code-footer");
-    return f && f.textContent ? f.textContent.trim() : "扫码付款";
+    var label = document.querySelector("#" + c.dom + " .card-label");
+    return label && label.textContent ? label.textContent.trim() : "扫码付款";
 }
 function showView(name) {
     var fsEl = document.getElementById("qrfs");
@@ -104,9 +104,9 @@ function showView(name) {
     document.body.classList.toggle("is-grid", name === "grid");
 }
 function colorOf(c) {
-    var body = document.querySelector("#" + c.dom + " .code-body");
-    if (body) {
-        var s = window.getComputedStyle(body).backgroundColor;
+    var top = document.querySelector("#" + c.dom + " .card-top");
+    if (top) {
+        var s = window.getComputedStyle(top).backgroundColor;
         if (s && s !== "rgba(0, 0, 0, 0)" && s !== "transparent") return s;
     }
     return "";
