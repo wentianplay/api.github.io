@@ -95,7 +95,7 @@ function showAll() {
     }
     window.scrollTo(0, 0);
 }
-var AUTO_REDIRECT = true ;
+var AUTO_REDIRECT = false ;
 (function init() {
     var hit = detectChannel();
     var target = null;
