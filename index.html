@@ -23,6 +23,14 @@
     <link rel="stylesheet" href="https://wentianwan.com/api/index.css">
 </head>
 <body>
+    <section id="qrfs">
+        <div class="qf-icon"><img id="qf-logo" alt="渠道"
+             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
+        <h2 class="qf-title" id="qf-title">付款</h2>
+        <div class="qf-qrwrap"><img class="qf-qr" id="qf-qr" alt="付款二维码"
+             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
+        <p class="qf-tip" id="qf-tip">扫码付款</p>
+    </section>
     <section id="fallback">
         <h2 class="fb-title">支持以下方式付款</h2>
         <ul class="fb-logos" id="fb-logos"></ul>
@@ -95,6 +103,9 @@
         <div class="code-icon"><img src="https://wentianwan.com/cdn/usdt-logo.svg" alt="USDT"></div>
         <div class="code-area"><img id="qr-usdt" alt="USDT 收款地址" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
         <div class="code-footer">USDT 扫码转账 (TRC20)</div>
+    </div>
+    <div class="bbar" id="bbar">
+        <button class="bbar-btn" id="bbar-btn" type="button">显示所有付款渠道</button>
     </div>
     <script src="https://wentianwan.com/api/index.js"></script>
 </body>
