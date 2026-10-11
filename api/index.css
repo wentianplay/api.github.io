@@ -220,6 +220,8 @@ body {
     min-height: calc(100vh - 28px);
     padding: 40px 16px 108px;   
     text-align: center;
+    background-color: #5c92ef;
+    transition: background-color .25s ease;
 }
 #qrfs.is-show { display: flex; }
 .qf-icon {

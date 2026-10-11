@@ -103,6 +103,14 @@ function showView(name) {
     });
     document.body.classList.toggle("is-grid", name === "grid");
 }
+function colorOf(c) {
+    var d = document.getElementById(c.dom);
+    if (d) {
+        var s = window.getComputedStyle(d).backgroundColor;
+        if (s && s !== "rgba(0, 0, 0, 0)" && s !== "transparent") return s;
+    }
+    return "";
+}
 function showFullscreen(c) {
     var box = document.getElementById("qrfs");
     var q = document.getElementById("qf-qr");
@@ -120,6 +128,14 @@ function showFullscreen(c) {
     if (lg) { lg.src = logoOf(c); lg.alt = nameOf(c); }
     if (tt) tt.textContent = nameOf(c);
     if (tp) tp.textContent = tipOf(c) + " · 长按可保存或识别";
+    var bg = colorOf(c);
+    if (bg) box.style.backgroundColor = bg;
+    if (tt) tt.style.color = "#fff";
+    if (tp) tp.style.color = "rgba(255,255,255,.85)";
+    var icon = box.querySelector(".qf-icon");
+    if (icon) icon.style.backgroundColor = "#fff";
+    var wrap = box.querySelector(".qf-qrwrap");
+    if (wrap) wrap.style.backgroundColor = "#fff";
     showView("qrfs");
     window.scrollTo(0, 0);
     return true;
