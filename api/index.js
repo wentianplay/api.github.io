@@ -3,9 +3,9 @@ var setting = {
     wechatUrl:   "https://payapp.wechatpay.cn/sjt/qr/AQHtwm9Qf3J-pNoFzuJVdbsq",
     qqUrl:       "https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&f=wallet&a=1&u=2185006560&n=%E5%9C%A8%E4%B9%A1%E4%B8%8B%E7%9A%84%E5%B0%8F%E6%96%87%E9%A3%9E&ac=CAEQ4JvykQgY64i1tAZCIDRkYTcxMjQ2MDE5ZWE2ZTY2ODcwNTlhNjRkMDgwM2Uz_xxx_sign",
     paypalUrl:   "https://paypal.me/wentianplay/",
-    venmoUrl:    "REPLACE_ME",    
-    kofiUrl:     "REPLACE_ME",   
-    afdianUrl:   "https://afdian.com/a/tborg",     
+    venmoUrl:    "REPLACE_ME",
+    kofiUrl:     "REPLACE_ME",
+    afdianUrl:   "https://afdian.com/a/tborg",
     btcAddress:  "REPLACE_ME",
     ethAddress:  "REPLACE_ME",
     usdtAddress: "REPLACE_ME"
@@ -126,17 +126,19 @@ function showFullscreen(c) {
     var tt = document.getElementById("qf-title");
     var tp = document.getElementById("qf-tip");
     if (lg) { lg.src = logoOf(c); lg.alt = nameOf(c); }
-    if (tt) { tt.textContent = nameOf(c); tt.style.color = ""; }
-    if (tp) { tp.textContent = tipOf(c) + " · 长按可保存或识别"; tp.style.color = ""; }
+    if (tt) tt.textContent = nameOf(c);
+    if (tp) tp.textContent = tipOf(c) + " · 长按可保存或识别";
     var bg = colorOf(c);
-    box.style.backgroundColor = bg || "";
+    if (bg) box.style.backgroundColor = bg;
+    if (tt) tt.style.color = "#333";
+    if (tp) tp.style.color = "#999";
     var icon = box.querySelector(".qf-icon");
-    if (icon) icon.style.backgroundColor = "";
-    var wrap = box.querySelector(".qf-qrwrap");
-    if (wrap) wrap.style.backgroundColor = "";
+    if (icon) icon.style.backgroundColor = "#fff";
+    var info = box.querySelector(".qf-info");
+    if (info) info.style.backgroundColor = "#fff";
     showView("qrfs");
-    setBar("显示所有付款渠道", "toall");
     window.scrollTo(0, 0);
+    setBar("显示所有付款渠道", "toall");
     return true;
 }
 function setBar(text, mode) {
@@ -206,26 +208,20 @@ function render() {
     if (barBtn) {
         barBtn.addEventListener("click", function () {
             if (barBtn.getAttribute("data-mode") === "back") {
-                try {
-                    history.replaceState(null, "", location.pathname + location.search);
-                } catch (e) {
-                    try { location.hash = ""; } catch (e2) {}
+                if (location.hash === "#all") {
+                    try { history.replaceState(null, "", location.pathname + location.search); } catch(e) { location.hash = ""; }
                 }
-                if (location.hash === "#all") { try { location.hash = ""; } catch (e3) {} }
                 render();
-                return;
-            }
-            if (location.hash !== "#all") {
-                try { location.hash = "#all"; } catch (e) { render(); }
             } else {
-                render();
+                if (location.hash !== "#all") location.hash = "#all";
+                else render();
             }
         });
     }
     channels.forEach(ch => {
         if (!ch.value || ch.value === "REPLACE_ME") {
             var el = document.getElementById(ch.dom);
-            if (el) el.classList.add('hidden'); 
+            if (el) el.classList.add('hidden');
         }
     });
     window.addEventListener("hashchange", render);
