@@ -81,11 +81,11 @@ function showFallback() {
     showView("fallback");
 }
 function logoOf(c) {
-    var img = document.querySelector("#" + c.dom + " .code-icon img");
+    var img = document.querySelector("#" + c.dom + " .code-header img");
     return img && img.getAttribute("src") ? img.getAttribute("src") : "/cdn/" + c.key + "-logo.svg";
 }
 function nameOf(c) {
-    var img = document.querySelector("#" + c.dom + " .code-icon img");
+    var img = document.querySelector("#" + c.dom + " .code-header img");
     return img && img.getAttribute("alt") ? img.getAttribute("alt") : c.key;
 }
 function tipOf(c) {
@@ -104,9 +104,9 @@ function showView(name) {
     document.body.classList.toggle("is-grid", name === "grid");
 }
 function colorOf(c) {
-    var d = document.getElementById(c.dom);
-    if (d) {
-        var s = window.getComputedStyle(d).backgroundColor;
+    var body = document.querySelector("#" + c.dom + " .code-body");
+    if (body) {
+        var s = window.getComputedStyle(body).backgroundColor;
         if (s && s !== "rgba(0, 0, 0, 0)" && s !== "transparent") return s;
     }
     return "";
@@ -194,7 +194,6 @@ function render() {
     showFallback();
     setBar(null);
 }
-
 (function init() {
     var fbBtn = document.getElementById("fb-btn");
     if (fbBtn) {
