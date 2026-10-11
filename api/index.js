@@ -3,9 +3,9 @@ var setting = {
     wechatUrl:   "https://payapp.wechatpay.cn/sjt/qr/AQHtwm9Qf3J-pNoFzuJVdbsq",
     qqUrl:       "https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&f=wallet&a=1&u=2185006560&n=%E5%9C%A8%E4%B9%A1%E4%B8%8B%E7%9A%84%E5%B0%8F%E6%96%87%E9%A3%9E&ac=CAEQ4JvykQgY64i1tAZCIDRkYTcxMjQ2MDE5ZWE2ZTY2ODcwNTlhNjRkMDgwM2Uz_xxx_sign",
     paypalUrl:   "https://paypal.me/wentianplay/",
-    venmoUrl:    "REPLACE_ME",    
-    kofiUrl:     "REPLACE_ME",   
-    afdianUrl:   "https://afdian.com/a/tborg",     
+    venmoUrl:    "REPLACE_ME",
+    kofiUrl:     "REPLACE_ME",
+    afdianUrl:   "https://afdian.com/a/tborg",
     btcAddress:  "REPLACE_ME",
     ethAddress:  "REPLACE_ME",
     usdtAddress: "REPLACE_ME"
@@ -220,7 +220,7 @@ function render() {
     channels.forEach(ch => {
         if (!ch.value || ch.value === "REPLACE_ME") {
             var el = document.getElementById(ch.dom);
-            if (el) el.classList.add('hidden'); 
+            if (el) el.classList.add('hidden');
         }
     });
     window.addEventListener("hashchange", render);
