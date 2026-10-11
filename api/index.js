@@ -201,6 +201,12 @@ function render() {
             }
         });
     }
+    channels.forEach(ch => {
+        if (!ch.value || ch.value === "REPLACE_ME") {
+            var el = document.getElementById(ch.dom);
+            if (el) el.classList.add('hidden'); 
+        }
+    });
     window.addEventListener("hashchange", render);
     render();
 })();
