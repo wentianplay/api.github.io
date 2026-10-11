@@ -117,7 +117,7 @@ function showFullscreen(c) {
     if (!box || !q) return false;
     var text = payloadOf(c);
     try {
-        q.src = QRCode.generatePNG(text, { margin: 0, ecclevel: "M", modulesize: 10 });
+        q.src = QRCode.generatePNG(text, { margin: 0, ecclevel: "M", modulesize: 8 });
     } catch (e) {
         return false;
     }
@@ -130,15 +130,12 @@ function showFullscreen(c) {
     if (tp) tp.textContent = tipOf(c) + " · 长按可保存或识别";
     var bg = colorOf(c);
     if (bg) box.style.backgroundColor = bg;
-    if (tt) tt.style.color = "#333";
-    if (tp) tp.style.color = "#999";
     var icon = box.querySelector(".qf-icon");
     if (icon) icon.style.backgroundColor = "#fff";
-    var info = box.querySelector(".qf-info");
-    if (info) info.style.backgroundColor = "#fff";
+    var wrap = box.querySelector(".qf-qrwrap");
+    if (wrap) wrap.style.backgroundColor = "#fff";
     showView("qrfs");
     window.scrollTo(0, 0);
-    setBar("显示所有付款渠道", "toall");
     return true;
 }
 function setBar(text, mode) {
@@ -209,7 +206,7 @@ function render() {
         barBtn.addEventListener("click", function () {
             if (barBtn.getAttribute("data-mode") === "back") {
                 if (location.hash === "#all") {
-                    try { history.replaceState(null, "", location.pathname + location.search); } catch(e) { location.hash = ""; }
+                    history.replaceState(null, "", location.pathname + location.search);
                 }
                 render();
             } else {
@@ -218,11 +215,17 @@ function render() {
             }
         });
     }
-    channels.forEach(ch => {
-        if (!ch.value || ch.value === "REPLACE_ME") {
-            var el = document.getElementById(ch.dom);
-            if (el) el.classList.add('hidden');
-        }
+    /* 点击渠道卡片 → 进入该渠道全屏大码 */
+    channels.forEach(function (c) {
+        var el = document.getElementById(c.dom);
+        if (!el) return;
+        if (!isReady(c.value)) { el.classList.add("hidden"); return; }
+        el.style.display = "block";
+        el.addEventListener("click", function () {
+            if (c.redirect) { window.location.replace(payloadOf(c)); return; }
+            showFullscreen(c);
+            setBar("显示所有付款渠道", "toall");
+        });
     });
     window.addEventListener("hashchange", render);
     render();
