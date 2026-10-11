@@ -20,16 +20,14 @@
     <link rel="preload" as="image" href="https://wentianwan.com/cdn/btc-logo.svg"/>
     <link rel="preload" as="image" href="https://wentianwan.com/cdn/eth-logo.svg"/>
     <link rel="preload" as="image" href="https://wentianwan.com/cdn/usdt-logo.svg"/>
-    <link rel="stylesheet" href="https://wentianwan.com/api/index.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <section id="qrfs">
-        <div class="qf-head">
-            <div class="qf-icon"><img id="qf-logo" alt="渠道"
-                 src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-            <h2 class="qf-title" id="qf-title">付款</h2>
-        </div>
-        <div class="qf-area"><img class="qf-qr" id="qf-qr" alt="付款二维码"
+        <div class="qf-icon"><img id="qf-logo" alt="渠道"
+             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
+        <h2 class="qf-title" id="qf-title">付款</h2>
+        <div class="qf-qrwrap"><img class="qf-qr" id="qf-qr" alt="付款二维码"
              src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
         <p class="qf-tip" id="qf-tip">扫码付款</p>
     </section>
@@ -46,89 +44,99 @@
             显示所有付款渠道<span class="arrow">▼</span>
         </button>
     </section>
+    <!-- 支付宝 -->
     <div class="code-item" id="code-alipay">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/alipay-logo.svg" alt="支付宝"></div>
-            <div class="code-tip">推荐使用支付宝</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/alipay-logo.svg" alt="支付宝">
+            <span class="code-name">支付宝</span>
         </div>
         <div class="code-area"><img id="qr-alipay" alt="支付宝收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">支付宝</span></div>
+        <div class="code-footer">支付宝扫一扫付款</div>
     </div>
+    <!-- 微信支付 -->
     <div class="code-item" id="code-wechat">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/wechat-logo.svg" alt="微信支付"></div>
-            <div class="code-tip">推荐使用微信支付</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/wechat-logo.svg" alt="微信支付">
+            <span class="code-name">微信支付</span>
         </div>
         <div class="code-area"><img id="qr-wechat" alt="微信收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">微信</span></div>
+        <div class="code-footer">微信扫一扫付款</div>
     </div>
+    <!-- QQ 钱包 -->
     <div class="code-item" id="code-qq">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/qq-logo.svg" alt="QQ 钱包"></div>
-            <div class="code-tip">推荐使用 QQ 钱包</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/qq-logo.svg" alt="QQ 钱包">
+            <span class="code-name">QQ 钱包</span>
         </div>
         <div class="code-area"><img id="qr-qq" alt="QQ 收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">QQ</span></div>
+        <div class="code-footer">QQ 扫一扫付款</div>
     </div>
+    <!-- PayPal -->
     <div class="code-item" id="code-paypal">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/paypal-logo.svg" alt="PayPal"></div>
-            <div class="code-tip">推荐使用 PayPal</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/paypal-logo.svg" alt="PayPal">
+            <span class="code-name">PayPal</span>
         </div>
         <div class="code-area"><img id="qr-paypal" alt="PayPal 收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">PayPal</span></div>
+        <div class="code-footer">PayPal 扫码付款</div>
     </div>
+    <!-- Venmo -->
     <div class="code-item" id="code-venmo">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/venmo-logo.svg" alt="Venmo"></div>
-            <div class="code-tip">推荐使用 Venmo</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/venmo-logo.svg" alt="Venmo">
+            <span class="code-name">Venmo</span>
         </div>
         <div class="code-area"><img id="qr-venmo" alt="Venmo 收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">Venmo</span></div>
+        <div class="code-footer">Venmo 扫码付款</div>
     </div>
+    <!-- Ko-fi -->
     <div class="code-item" id="code-kofi">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/kofi-logo.svg" alt="Ko-fi"></div>
-            <div class="code-tip">请我喝杯咖啡</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/kofi-logo.svg" alt="Ko-fi">
+            <span class="code-name">Ko-fi</span>
         </div>
         <div class="code-area"><img id="qr-kofi" alt="Ko-fi 收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">Ko-fi</span></div>
+        <div class="code-footer">Ko-fi 请我喝杯咖啡</div>
     </div>
+    <!-- 爱发电 -->
     <div class="code-item" id="code-afdian">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/afdian-logo.svg" alt="爱发电"></div>
-            <div class="code-tip">在爱发电支持我</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/afdian-logo.svg" alt="爱发电">
+            <span class="code-name">爱发电</span>
         </div>
-        <div class="code-area"><img id="qr-afdian" alt="爱发电主页码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">爱发电</span></div>
+        <div class="code-area"><img id="qr-afdian" alt="爱发电主页码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQAAABACAkQBADs="></div>
+        <div class="code-footer">在爱发电支持我</div>
     </div>
+    <!-- Bitcoin -->
     <div class="code-item" id="code-btc">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/btc-logo.svg" alt="Bitcoin"></div>
-            <div class="code-tip">BTC 扫码转账</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/btc-logo.svg" alt="Bitcoin">
+            <span class="code-name">Bitcoin</span>
         </div>
         <div class="code-area"><img id="qr-btc" alt="BTC 收款地址" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">BTC</span></div>
+        <div class="code-footer">BTC 扫码转账</div>
     </div>
+    <!-- Ethereum -->
     <div class="code-item" id="code-eth">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/eth-logo.svg" alt="Ethereum"></div>
-            <div class="code-tip">ETH 扫码转账</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/eth-logo.svg" alt="Ethereum">
+            <span class="code-name">Ethereum</span>
         </div>
         <div class="code-area"><img id="qr-eth" alt="ETH 收款地址" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">ETH</span></div>
+        <div class="code-footer">ETH 扫码转账</div>
     </div>
+    <!-- USDT -->
     <div class="code-item" id="code-usdt">
-        <div class="code-head">
-            <div class="code-icon"><img src="https://wentianwan.com/cdn/usdt-logo.svg" alt="USDT"></div>
-            <div class="code-tip">USDT 扫码转账 (TRC20)</div>
+        <div class="code-icon">
+            <img src="https://wentianwan.com/cdn/usdt-logo.svg" alt="USDT">
+            <span class="code-name">USDT</span>
         </div>
         <div class="code-area"><img id="qr-usdt" alt="USDT 收款地址" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer"><span class="name">苏天彬</span><span class="tag">USDT</span></div>
+        <div class="code-footer">USDT 扫码转账 (TRC20)</div>
     </div>
     <div class="bbar" id="bbar">
         <button class="bbar-btn" id="bbar-btn" type="button">显示所有付款渠道</button>
     </div>
-    <script src="https://wentianwan.com/api/index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
