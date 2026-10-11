@@ -47,7 +47,6 @@ function readyChannels() {
     return channels.filter(function (c) { return isReady(c.value); });
 }
 function detectChannel() {
-    /* 5.1 URL 强制指定：?pay=wechat */
     var m = location.search.match(/[?&]pay=([a-z0-9]+)/i);
     if (m) return m[1].toLowerCase();
     var ua = navigator.userAgent || "";
