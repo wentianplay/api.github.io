@@ -3,21 +3,21 @@ var setting = {
     wechatUrl:   "https://payapp.wechatpay.cn/sjt/qr/AQHtwm9Qf3J-pNoFzuJVdbsq",
     qqUrl:       "https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&f=wallet&a=1&u=2185006560&n=%E5%9C%A8%E4%B9%A1%E4%B8%8B%E7%9A%84%E5%B0%8F%E6%96%87%E9%A3%9E&ac=CAEQ4JvykQgY64i1tAZCIDRkYTcxMjQ2MDE5ZWE2ZTY2ODcwNTlhNjRkMDgwM2Uz_xxx_sign",
     paypalUrl:   "https://paypal.me/wentianplay/",
-    venmoUrl:    "REPLACE_ME",
-    kofiUrl:     "REPLACE_ME",
-    afdianUrl:   "REPLACE_ME",
+    venmoUrl:    "REPLACE_ME",    
+    kofiUrl:     "REPLACE_ME",   
+    afdianUrl:   "REPLACE_ME",     
     btcAddress:  "REPLACE_ME",
     ethAddress:  "REPLACE_ME",
     usdtAddress: "REPLACE_ME"
 };
 var channels = [
-    { key: "alipay", dom: "code-alipay", qr: "qr-alipay", value: setting.aliUrl,    uri: false },
-    { key: "wechat", dom: "code-wechat", qr: "qr-wechat", value: setting.wechatUrl, uri: false },
-    { key: "qq",     dom: "code-qq",     qr: "qr-qq",     value: setting.qqUrl,     uri: false },
-    { key: "paypal", dom: "code-paypal", qr: "qr-paypal", value: setting.paypalUrl, uri: false },
-    { key: "venmo",  dom: "code-venmo",  qr: "qr-venmo",  value: setting.venmoUrl,  uri: false },
-    { key: "kofi",   dom: "code-kofi",   qr: "qr-kofi",   value: setting.kofiUrl,   uri: false },
-    { key: "afdian", dom: "code-afdian", qr: "qr-afdian", value: setting.afdianUrl, uri: false },
+    { key: "alipay", dom: "code-alipay", qr: "qr-alipay", value: setting.aliUrl,     uri: false },
+    { key: "wechat", dom: "code-wechat", qr: "qr-wechat", value: setting.wechatUrl,  uri: false },
+    { key: "qq",     dom: "code-qq",     qr: "qr-qq",     value: setting.qqUrl,      uri: false },
+    { key: "paypal", dom: "code-paypal", qr: "qr-paypal", value: setting.paypalUrl,  uri: false },
+    { key: "venmo",  dom: "code-venmo",  qr: "qr-venmo",  value: setting.venmoUrl,   uri: false },
+    { key: "kofi",   dom: "code-kofi",   qr: "qr-kofi",   value: setting.kofiUrl,    uri: false },
+    { key: "afdian", dom: "code-afdian", qr: "qr-afdian", value: setting.afdianUrl,  uri: false },
     { key: "btc",    dom: "code-btc",    qr: "qr-btc",    value: setting.btcAddress,  uri: "bitcoin:" },
     { key: "eth",    dom: "code-eth",    qr: "qr-eth",    value: setting.ethAddress,  uri: "ethereum:" },
     { key: "usdt",   dom: "code-usdt",   qr: "qr-usdt",   value: setting.usdtAddress, uri: false }
@@ -26,6 +26,9 @@ var channels = [
 function isReady(v) {
     return typeof v === "string" && v.length > 0 && !/REPLACE_ME/i.test(v);
 }
+function payloadOf(c) {
+    return c.uri ? c.uri + c.value : c.value;
+}
 function draw(qrId, boxId, text) {
     var el = document.getElementById(qrId);
     var box = document.getElementById(boxId);
@@ -33,35 +36,91 @@ function draw(qrId, boxId, text) {
     try {
         el.src = QRCode.generatePNG(text, { margin: 0, ecclevel: "M" });
         el.setAttribute("data-payload", text);
-        box.style.display = "block";     
+        box.style.display = "block";
         return true;
     } catch (e) {
         box.style.display = "none";
         return false;
     }
 }
-(function renderAll() {
-    var shown = 0;
-    for (var i = 0; i < channels.length; i++) {
-        var c = channels[i];
-        if (!isReady(c.value)) continue;                 
-        var payload = c.uri ? c.uri + c.value : c.value;
-        if (draw(c.qr, c.dom, payload)) shown++;
+function readyChannels() {
+    return channels.filter(function (c) { return isReady(c.value); });
+}
+function detectChannel() {
+    /* 5.1 URL 强制指定：?pay=wechat */
+    var m = location.search.match(/[?&]pay=([a-z0-9]+)/i);
+    if (m) return m[1].toLowerCase();
+    var ua = navigator.userAgent || "";
+    if (/Alipay/i.test(ua))                 return "alipay";
+    if (/MicroMessenger\//i.test(ua))       return "wechat";
+    if (/\bQQ\//i.test(ua))                 return "qq";
+    return "";
+}
+function showFallback() {
+    var fb = document.getElementById("fallback");
+    if (!fb) return;
+    var ul = document.getElementById("fb-logos");
+    var list = readyChannels();
+    if (ul) {
+        ul.innerHTML = "";
+        list.forEach(function (c) {
+            var li = document.createElement("li");
+            var img = document.createElement("img");
+            img.src = "/cdn/" + c.key + "-logo.svg";
+            img.alt = c.key;
+            img.loading = "lazy";
+            li.appendChild(img);
+            ul.appendChild(li);
+        });
+        ul.style.display = list.length ? "flex" : "none";
     }
-    if (shown === 0) {
+    var selfUrl = location.origin + location.pathname + location.search;
+    var qr = document.getElementById("fb-qr");
+    if (qr && typeof QRCode !== "undefined") {
+        try { qr.src = QRCode.generatePNG(selfUrl, { margin: 0, ecclevel: "M" }); } catch (e) {}
+    }
+    fb.classList.add("is-show");
+}
+function showAll() {
+    var fb = document.getElementById("fallback");
+    if (fb) fb.classList.remove("is-show");
+    var n = 0;
+    readyChannels().forEach(function (c) {
+        if (draw(c.qr, c.dom, payloadOf(c))) n++;
+    });
+    if (n === 0) {
         console.warn("setting");
+        if (fb) fb.classList.add("is-show");  
+        return;
+    }
+    window.scrollTo(0, 0);
+}
+var AUTO_REDIRECT = true ;
+(function init() {
+    var hit = detectChannel();
+    var target = null;
+    if (hit) {
+        for (var i = 0; i < channels.length; i++) {
+            if (channels[i].key === hit && isReady(channels[i].value)) {
+                target = channels[i];
+                break;
+            }
+        }
+    }
+    if (target) {
+        if (AUTO_REDIRECT) {
+            window.location.href = payloadOf(target);
+            return;
+        }
+        if (draw(target.qr, target.dom, payloadOf(target))) return;
+    }
+    if (location.hash === "#all") showAll();
+    else showFallback();
+    var btn = document.getElementById("fb-btn");
+    if (btn) {
+        btn.addEventListener("click", function () {
+            if (location.hash !== "#all") history.replaceState(null, "", "#all");
+            showAll();
+        });
     }
 })();
-var AUTO_REDIRECT = true;
-if (AUTO_REDIRECT) {
-    (function autoRedirect() {
-        var ua = navigator.userAgent || "";
-        var forced = (location.search.match(/[?&]pay=(alipay|wechat|qq|paypal|venmo|kofi|afdian|btc|eth|usdt)/i) || [])[1];
-        forced = forced ? forced.toLowerCase() : "";
-        var target = null;
-        if (forced === "alipay" || (!forced && /Alipay/i.test(ua)))            target = setting.aliUrl;
-        else if (forced === "wechat" || (!forced && /MicroMessenger\//i.test(ua))) target = setting.wechatUrl;
-        else if (forced === "qq" || (!forced && /QQ\//i.test(ua)))             target = setting.qqUrl;
-        if (target && isReady(target)) window.location.href = target;
-    })();
-}

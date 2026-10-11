@@ -23,35 +23,48 @@
     <link rel="stylesheet" href="https://wentianwan.com/api/index.css">
 </head>
 <body>
+    <section id="fallback">
+        <h2 class="fb-title">支持以下方式赞助</h2>
+        <ul class="fb-logos" id="fb-logos"></ul>
+        <img class="fb-qr" id="fb-qr" alt="本网站二维码"
+             src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=">
+        <p class="fb-tip">
+            未识别到可直达的支付 App<br>
+            扫码打开本网站，或直接选择下方按钮
+        </p>
+        <button class="fb-btn" id="fb-btn" type="button">
+            显示所有支付二维码<span class="arrow">▼</span>
+        </button>
+    </section>
     <!-- 支付宝 -->
     <div class="code-item" id="code-alipay">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/alipay-logo.svg" alt="支付宝"></div>
         <div class="code-area"><img id="qr-alipay" alt="支付宝收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">支付宝扫一扫付款</div>
     </div>
     <!-- 微信支付 -->
     <div class="code-item" id="code-wechat">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/wechat-logo.svg" alt="微信支付"></div>
         <div class="code-area"><img id="qr-wechat" alt="微信收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">微信扫一扫付款</div>
     </div>
     <!-- QQ 钱包 -->
     <div class="code-item" id="code-qq">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/qq-logo.svg" alt="QQ 钱包"></div>
         <div class="code-area"><img id="qr-qq" alt="QQ 收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">QQ 扫一扫付款</div>
     </div>
     <!-- PayPal -->
     <div class="code-item" id="code-paypal">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/paypal-logo.svg" alt="PayPal"></div>
         <div class="code-area"><img id="qr-paypal" alt="PayPal 收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">PayPal 扫码付款</div>
     </div>
     <!-- Venmo -->
     <div class="code-item" id="code-venmo">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/venmo-logo.svg" alt="Venmo"></div>
         <div class="code-area"><img id="qr-venmo" alt="Venmo 收款码" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">Venmo 扫码付款</div>
     </div>
     <!-- Ko-fi -->
     <div class="code-item" id="code-kofi">
@@ -69,19 +82,19 @@
     <div class="code-item" id="code-btc">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/btc-logo.svg" alt="Bitcoin"></div>
         <div class="code-area"><img id="qr-btc" alt="BTC 收款地址" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">BTC 扫码转账</div>
     </div>
     <!-- Ethereum -->
     <div class="code-item" id="code-eth">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/eth-logo.svg" alt="Ethereum"></div>
         <div class="code-area"><img id="qr-eth" alt="ETH 收款地址" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">ETH 扫码转账</div>
     </div>
     <!-- USDT -->
     <div class="code-item" id="code-usdt">
         <div class="code-icon"><img src="https://wentianwan.com/cdn/usdt-logo.svg" alt="USDT"></div>
         <div class="code-area"><img id="qr-usdt" alt="USDT 收款地址" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="></div>
-        <div class="code-footer">扫描以上二维码向我付款</div>
+        <div class="code-footer">USDT 扫码转账 (TRC20)</div>
     </div>
     <script src="https://wentianwan.com/api/index.js"></script>
 </body>
