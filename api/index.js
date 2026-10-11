@@ -5,7 +5,7 @@ var setting = {
     paypalUrl:   "https://paypal.me/wentianplay/",
     venmoUrl:    "REPLACE_ME",    
     kofiUrl:     "REPLACE_ME",   
-    afdianUrl:   "https://afdian.net/a/wentianplay",     
+    afdianUrl:   "https://afdian.com/a/tborg",     
     btcAddress:  "REPLACE_ME",
     ethAddress:  "REPLACE_ME",
     usdtAddress: "REPLACE_ME"
