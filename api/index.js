@@ -11,7 +11,7 @@ function isReady(c) {
     for (var i = 0; i < vals.length; i++) {
         var v = vals[i];
         if (typeof v !== "string" || !v.length) return false;
-        if (/^(REPLACE_ME|BOC_|TODO)/i.test(v.trim())) return false; // 占位符
+        if (/^(REPLACE_ME|BOC_|TODO)/i.test(v.trim())) return false;
     }
     return true;
 }
@@ -266,9 +266,7 @@ function boot(cfg) {
             document.head.appendChild(l);
         }
     });
-
     renderGrid();
-
     var btn = $("bbar-btn");
     if (btn) btn.addEventListener("click", function () {
         if (VIEW === "qrfs") showView("grid");
@@ -286,16 +284,15 @@ function boot(cfg) {
         if (VIEW === "qrfs") fitLogo($("qf-logo"));
     });
 }
-
 function load() {
-    var url = "https://wentianwan.com/api/index.json?v=" + Date.now();
+    var url = "https://wentianwan.com/api/?v=" + Date.now();
     if (typeof fetch === "function") {
         fetch(url).then(function (r) { return r.json(); })
             .then(boot)
             .catch(function () {
                 document.body.innerHTML =
                     '<p style="padding:40px;text-align:center;color:#999;line-height:1.8">' +
-                    '配置加载失败<br>请用 http(s) 方式访问本页</p>';
+                    '请用 http(s) 方式访问聚合收款码</p>';
             });
     } else {
         var x = new XMLHttpRequest();
@@ -306,6 +303,5 @@ function load() {
         x.send();
     }
 }
-
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", load);
 else load();
