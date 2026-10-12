@@ -211,6 +211,10 @@ body {
     body { grid-template-columns: minmax(0, 1fr); }
     .fb-logos li { width: 42px; height: 42px; }
 }
+@media (max-width: 340px) {
+    body { grid-template-columns: minmax(0, 1fr); }
+    .fb-logos li { width: 42px; height: 42px; }
+}
 #qrfs {
     grid-column: 1 / -1;
     display: none;
@@ -289,10 +293,11 @@ body {
 }
 .qf-qr {
     display: block;
-    width: 240px;
-    max-width: 62vw;
+    width: 272px;
+    max-width: 70vw;
     aspect-ratio: 1 / 1;
-    image-rendering: pixelated;   
+    image-rendering: pixelated;
+    -webkit-touch-callout: default;
 }
 .qf-qrbox {
     position: relative;
@@ -304,26 +309,21 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 21%;
+    width: 20%;
     aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, .04), 0 2px 6px rgba(0, 0, 0, .12);
-    overflow: hidden;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px #fff, 0 2px 6px rgba(0, 0, 0, .12);
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
-.qf-avatar img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
-/* 卡片内收款人 */
+.qf-avatar.hidden { display: none; }
 .qf-name {
     margin: 11px 0 0;
     font-size: 15px;
@@ -421,10 +421,31 @@ body.is-grid { padding-bottom: 96px; }
     .qf-icon { width: 66px; height: 66px; padding: 11px; border-radius: 17px; }
     .qf-title { font-size: 18px; margin: 12px 0 3px; }
     .qf-sub { font-size: 13px; }
-    .qf-qr { width: 200px; max-width: 70vw; }
+    .qf-qr { width: 226px; max-width: 78vw; }   /* 200 × 1.13 */
+    .qf-avatar { box-shadow: 0 0 0 3px #fff, 0 2px 6px rgba(0, 0, 0, .12); }
     .qf-name { margin-top: 9px; font-size: 14px; }
     .qf-guide { font-size: 15px; }
     .qf-tip { margin-top: 6px; font-size: 12px; }
     .bbar-btn { padding: 12px 26px; font-size: 15px; }
 }
 .hidden { display: none !important; }
+@media (max-height: 700px) {
+    .qf-top { padding: 18px 16px 12px; }
+    .qf-icon { width: 58px; height: 58px; padding: 10px; border-radius: 15px; }
+    .qf-title { font-size: 17px; margin: 8px 0 2px; }
+    .qf-sub { font-size: 12px; }
+    .qf-mid { padding: 14px 16px 16px; }
+    .qf-name { margin-top: 7px; font-size: 13px; }
+    .qf-bottom { padding: 14px 16px 82px; }
+    .qf-guide { font-size: 14px; }
+    .qf-tip { margin-top: 4px; font-size: 12px; }
+}
+@media (max-height: 600px) {
+    .qf-top { padding: 14px 16px 10px; }
+    .qf-icon { width: 52px; height: 52px; padding: 9px; border-radius: 14px; }
+    .qf-title { font-size: 16px; margin: 6px 0 2px; }
+    .qf-mid { padding: 12px 16px 14px; }
+    .qf-qr { width: min(226px, 29vh); }
+    .qf-qrwrap { padding: 12px 12px 10px; }
+    .qf-bottom { padding: 12px 16px 76px; }
+}
