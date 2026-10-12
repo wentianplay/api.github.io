@@ -120,6 +120,42 @@ function colorOf(c) {
 function appOf(c) {
     return c.app || nameOf(c);
 }
+function fitLogo(img) {
+    if (!img) return;
+    var base = parseFloat(window.getComputedStyle(img).getPropertyValue("--qf-logo-h")) || 72;
+    var minH = 34;
+    var availOf = function () {              
+        var host = img.parentElement;
+        if (!host) return document.documentElement.clientWidth || 320;
+        var hs = window.getComputedStyle(host);
+        var w = host.clientWidth - (parseFloat(hs.paddingLeft) || 0) - (parseFloat(hs.paddingRight) || 0);
+        return w > 0 ? w : document.documentElement.clientWidth || 320;
+    };
+    var maxW = Math.min(260, Math.round(availOf() * 0.62));
+    var measure = function () {
+        var nw = img.naturalWidth, nh = img.naturalHeight;
+        if (!nw || !nh) {      
+            img.style.width = "auto";
+            img.style.height = base + "px";
+            return;
+        }
+        img.classList.toggle("is-pixel", Math.max(nw, nh) <= 32);
+        var h = base, w = base * (nw / nh);
+        if (w > maxW) { w = maxW; h = w * (nh / nw); }  
+        if (h < minH) { h = minH; w = h * (nw / nh); }   
+        if (w > maxW) { w = maxW; h = w * (nh / nw); }   
+        img.style.width = w.toFixed(2) + "px";
+        img.style.height = h.toFixed(2) + "px";
+    };
+    var reset = function () {
+        img.style.width = "";
+        img.style.height = "";
+        img.classList.remove("is-pixel");
+    };
+    img.addEventListener("error", reset, { once: true });
+    if (img.complete && img.naturalWidth) measure();
+    else img.addEventListener("load", measure, { once: true });
+}
 function showFullscreen(c) {
     var box = document.getElementById("qrfs");
     var q = document.getElementById("qf-qr");
@@ -138,7 +174,7 @@ function showFullscreen(c) {
     var gd = document.getElementById("qf-guide");
     var tp = document.getElementById("qf-tip");
     var av = document.getElementById("qf-avatar");
-    if (lg) { lg.src = logoOf(c); lg.alt = nameOf(c); }
+    if (lg) { lg.src = logoOf(c); lg.alt = nameOf(c); fitLogo(lg); }
     if (tt) tt.textContent = nameOf(c);
     if (sb) sb.textContent = "推荐使用" + appOf(c);
     if (nm) {
@@ -298,5 +334,12 @@ function render() {
         });
     });
     window.addEventListener("hashchange", render);
+    var rt = 0;
+    window.addEventListener("resize", function () {
+        clearTimeout(rt);
+        rt = setTimeout(function () {
+            if (curView === "qrfs") fitLogo(document.getElementById("qf-logo"));
+        }, 120);
+    });
     render();
 })();
