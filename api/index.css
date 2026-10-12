@@ -4,112 +4,92 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #f0f2f5;
+    background-color: #fff;
     font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB",
                  "Helvetica Neue", Arial, sans-serif;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    padding: 16px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    padding: 14px;
     align-items: start;
 }
 .code-item {
     width: 100%;
+    padding-bottom: 1px;
     display: none;
-    background-color: #fff;
-    border-radius: 14px;
+    background-color: #5c92ef;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .10);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .10);
     transition: transform .18s ease, box-shadow .18s ease;
 }
 .code-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .16);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .16);
 }
-.card-top {
-    position: relative;
-    padding: 26px 18px 34px;
+.code-icon {
+    height: 84px;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 14px 12px;
 }
-.card-label {
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: .5px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, .12);
-    margin-bottom: 18px;
-}
-.card-panel {
-    width: 100%;
-    background: #fff;
-    border-radius: 12px;
-    padding: 18px 16px 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, .10);
-}
-.card-panel img {
+.code-icon img {
+    max-height: 52px;
+    max-width: 78%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
-    width: 100%;
-    max-width: 200px;
+}
+.code-area {
+    text-align: center;
+    padding: 22px 12px;
+}
+.code-area img {
+    display: block;
+    margin: 0 auto;
+    width: 78%;
+    max-width: 190px;
     min-width: 84px;
     aspect-ratio: 1 / 1;
     background: #fff;
-    padding: 6px;
-    border-radius: 8px;
+    padding: 8px;
+    border-radius: 6px;
 }
-.card-name {
-    margin-top: 12px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #333;
-    letter-spacing: .5px;
-}
-.card-wave {
-    display: block;
-    width: 100%;
-    height: 18px;
-    margin-top: -1px;
-}
-.card-bottom {
+.code-footer {
+    min-height: 62px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 14px 12px;
-    background: #fff;
-}
-.card-bottom img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
-.card-bottom span {
+    text-align: center;
+    background-color: #fff;
+    color: #666;
     font-size: 15px;
-    font-weight: 600;
-    color: #333;
+    line-height: 1.45;
+    padding: 12px 8px;
+    margin: 0 4px 3px 4px;
+    border-radius: 0 0 6px 6px;
 }
-#code-alipay .card-top { background-color: #1677ff; }
-#code-wechat .card-top { background-color: #07c160; }
-#code-qq     .card-top { background-color: #12b7f5; }
-#code-paypal .card-top { background-color: #0070ba; }
-#code-venmo  .card-top { background-color: #008cff; }
-#code-kofi   .card-top { background-color: #ff5e5b; }
-#code-afdian .card-top { background-color: #946ce6; }
-#code-btc    .card-top { background-color: #f7931a; }
-#code-eth    .card-top { background-color: #627eea; }
-#code-usdt   .card-top { background-color: #26a17b; }
+#code-alipay { background-color: #1677ff; }  /* 支付宝蓝 */
+#code-wechat { background-color: #07c160; }  /* 微信绿   */
+#code-qq     { background-color: #12b7f5; }  /* QQ 蓝    */
+#code-paypal { background-color: #0070ba; }  /* PayPal   */
+#code-venmo  { background-color: #008cff; }  /* Venmo    */
+#code-kofi   { background-color: #ff5e5b; }  /* Ko-fi 红 */
+#code-afdian { background-color: #946ce6; }  /* 爱发电紫 */
+#code-btc    { background-color: #f7931a; }  /* BTC 橙   */
+#code-eth    { background-color: #627eea; }  /* ETH 紫蓝 */
+#code-usdt   { background-color: #26a17b; }  /* USDT 绿  */
 #fallback {
-    grid-column: 1 / -1;
-    align-self: stretch;
-    display: none;
+    grid-column: 1 / -1;           
+    align-self: stretch;            
+    display: none;             
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 32px);
+    min-height: calc(100vh - 28px); 
     padding: 40px 16px 48px;
     text-align: center;
 }
@@ -132,7 +112,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 9px;
-    background: #fff;
+    background: #f4f6f9;
     border-radius: 14px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .07);
     transition: transform .18s ease, box-shadow .18s ease;
@@ -208,20 +188,18 @@ body {
 }
 .fb-btn:hover .arrow { transform: translateY(2px); }
 @media (max-width: 1000px) {
-    body { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    body { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (max-width: 820px) {
-    body { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 12px; }
-    .card-top { padding: 22px 14px 30px; }
-    .card-label { font-size: 14px; margin-bottom: 14px; }
-    .card-panel { padding: 14px 12px 12px; }
+    body { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 12px; }
+    .code-icon { height: 74px; }
+    .code-icon img { max-height: 44px; }
     #fallback { min-height: calc(100vh - 24px); }
     .fb-logos li { width: 52px; height: 52px; }
 }
 @media (max-width: 560px) {
-    body { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 10px; }
-    .card-bottom span { font-size: 14px; }
-    .card-name { font-size: 15px; }
+    body { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 10px; }
+    .code-footer { font-size: 14px; min-height: 56px; }
     #fallback { min-height: calc(100vh - 20px); padding: 28px 14px 36px; }
     .fb-title { font-size: 17px; margin-bottom: 14px; }
     .fb-qr { width: 200px; max-width: 60vw; }
@@ -230,6 +208,7 @@ body {
     .fb-btn { width: 100%; max-width: 300px; font-size: 15px; padding: 12px 24px; }
 }
 @media (max-width: 340px) {
+    body { grid-template-columns: minmax(0, 1fr); }
     .fb-logos li { width: 42px; height: 42px; }
 }
 #qrfs {
@@ -238,10 +217,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 32px);
-    padding: 40px 16px 108px;
+    min-height: calc(100vh - 28px);
+    padding: 40px 16px 108px;   
     text-align: center;
-    background-color: #1677ff;
+    background-color: #5c92ef;
     transition: background-color .25s ease;
 }
 #qrfs.is-show { display: flex; }
@@ -252,7 +231,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 13px;
-    background: #fff;
+    background: #f4f6f9;
     border-radius: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .07);
 }
@@ -265,14 +244,20 @@ body {
     display: block;
 }
 .qf-title {
-    margin: 16px 0 20px;
+    margin: 16px 0 4px;
     font-size: 20px;
     font-weight: 700;
-    color: #fff;
+    color: #333;
+    letter-spacing: .5px;
+}
+.qf-sub {
+    margin: 0 0 18px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, .85);
     letter-spacing: .5px;
 }
 .qf-qrwrap {
-    padding: 14px;
+    padding: 16px 16px 14px;
     background: #fff;
     border: 1px solid #ececec;
     border-radius: 16px;
@@ -283,12 +268,69 @@ body {
     width: 240px;
     max-width: 62vw;
     aspect-ratio: 1 / 1;
-    image-rendering: pixelated;
+    image-rendering: pixelated;   
+}
+/* 二维码 + 中心头像 */
+.qf-qrbox {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+}
+.qf-avatar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 21%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .04), 0 2px 6px rgba(0, 0, 0, .12);
+    overflow: hidden;
+}
+.qf-avatar img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+/* 卡片内收款人 */
+.qf-name {
+    margin: 11px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: .5px;
+    line-height: 1.4;
+}
+.qf-name.hidden { display: none; }
+/* 底部引导语 */
+.qf-guide {
+    margin: 20px 0 0;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: .5px;
+    line-height: 1.6;
+}
+.qf-guide .app { font-weight: 700; }
+.qf-guide .hl {
+    display: inline-block;
+    margin: 0 2px;
+    padding: 1px 8px;
+    font-weight: 700;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, .20);
 }
 .qf-tip {
-    margin: 18px 0 0;
-    font-size: 14px;
-    color: rgba(255, 255, 255, .85);
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, .62);
     line-height: 1.6;
 }
 .bbar {
@@ -342,9 +384,12 @@ body.is-grid { padding-bottom: 96px; }
 @media (max-width: 560px) {
     #qrfs { min-height: calc(100vh - 20px); padding: 28px 14px 100px; }
     .qf-icon { width: 66px; height: 66px; padding: 11px; border-radius: 17px; }
-    .qf-title { font-size: 18px; margin: 14px 0 16px; }
+    .qf-title { font-size: 18px; margin: 14px 0 4px; }
+    .qf-sub { font-size: 13px; margin-bottom: 14px; }
     .qf-qr { width: 200px; max-width: 70vw; }
-    .qf-tip { margin-top: 14px; font-size: 13px; }
+    .qf-name { margin-top: 9px; font-size: 14px; }
+    .qf-guide { margin-top: 16px; font-size: 15px; }
+    .qf-tip { margin-top: 8px; font-size: 12px; }
     .bbar-btn { padding: 12px 26px; font-size: 15px; }
 }
 .hidden { display: none !important; }
