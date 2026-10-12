@@ -215,15 +215,39 @@ body {
     grid-column: 1 / -1;
     display: none;
     flex-direction: column;
+    align-items: stretch;
+    min-height: calc(100vh - 28px);
+    padding: 0;
+    text-align: center;
+    background-color: #f4f6f9;
+    overflow: hidden;
+}
+#qrfs.is-show { display: flex; }
+.qf-top {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 34px 16px 24px;
+    background: #f4f6f9;
+}
+.qf-mid {
+    flex: 1 1 auto;
+    display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 28px);
-    padding: 40px 16px 108px;   
-    text-align: center;
+    padding: 26px 16px 30px;
     background-color: #5c92ef;
     transition: background-color .25s ease;
 }
-#qrfs.is-show { display: flex; }
+.qf-bottom {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 16px 104px;
+    background: #fff;
+}
 .qf-icon {
     width: 78px;
     height: 78px;
@@ -231,7 +255,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 13px;
-    background: #f4f6f9;
+    background: #fff;
     border-radius: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .07);
 }
@@ -244,16 +268,16 @@ body {
     display: block;
 }
 .qf-title {
-    margin: 16px 0 4px;
+    margin: 14px 0 4px;
     font-size: 20px;
     font-weight: 700;
     color: #333;
     letter-spacing: .5px;
 }
 .qf-sub {
-    margin: 0 0 18px;
+    margin: 0;
     font-size: 14px;
-    color: rgba(255, 255, 255, .85);
+    color: #8a8f99;
     letter-spacing: .5px;
 }
 .qf-qrwrap {
@@ -270,7 +294,6 @@ body {
     aspect-ratio: 1 / 1;
     image-rendering: pixelated;   
 }
-/* 二维码 + 中心头像 */
 .qf-qrbox {
     position: relative;
     display: inline-block;
@@ -310,27 +333,30 @@ body {
     line-height: 1.4;
 }
 .qf-name.hidden { display: none; }
-/* 底部引导语 */
 .qf-guide {
-    margin: 20px 0 0;
+    margin: 0;
     font-size: 16px;
-    color: #fff;
+    color: #666;
     letter-spacing: .5px;
     line-height: 1.6;
 }
-.qf-guide .app { font-weight: 700; }
+.qf-guide .app {
+    font-weight: 700;
+    color: var(--qf-brand, #333);
+}
 .qf-guide .hl {
     display: inline-block;
     margin: 0 2px;
     padding: 1px 8px;
     font-weight: 700;
     border-radius: 6px;
-    background: rgba(255, 255, 255, .20);
+    color: var(--qf-brand, #333);
+    background: var(--qf-tint, rgba(0, 0, 0, .06));
 }
 .qf-tip {
-    margin: 10px 0 0;
+    margin: 8px 0 0;
     font-size: 13px;
-    color: rgba(255, 255, 255, .62);
+    color: #9aa0a6;
     line-height: 1.6;
 }
 .bbar {
@@ -338,10 +364,12 @@ body {
     left: 50%;
     bottom: calc(22px + env(safe-area-inset-bottom, 0px));
     transform: translateX(-50%);
-    z-index: 50;
+    z-index: 9999;
+    pointer-events: none;
     display: none;
 }
 .bbar.is-show { display: block; }
+.bbar.is-show .bbar-btn { pointer-events: auto; }
 .bbar-btn {
     appearance: none;
     -webkit-appearance: none;
@@ -358,6 +386,10 @@ body {
     border-radius: 999px;
     cursor: pointer;
     white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
     box-shadow: 0 6px 18px rgba(22, 119, 255, .30);
     transition: transform .16s ease, box-shadow .16s ease;
 }
@@ -382,14 +414,17 @@ body {
 }
 body.is-grid { padding-bottom: 96px; }
 @media (max-width: 560px) {
-    #qrfs { min-height: calc(100vh - 20px); padding: 28px 14px 100px; }
+    #qrfs { min-height: calc(100vh - 20px); }
+    .qf-top { padding: 26px 14px 18px; }
+    .qf-mid { padding: 22px 14px 24px; }
+    .qf-bottom { padding: 18px 14px 96px; }
     .qf-icon { width: 66px; height: 66px; padding: 11px; border-radius: 17px; }
-    .qf-title { font-size: 18px; margin: 14px 0 4px; }
-    .qf-sub { font-size: 13px; margin-bottom: 14px; }
+    .qf-title { font-size: 18px; margin: 12px 0 3px; }
+    .qf-sub { font-size: 13px; }
     .qf-qr { width: 200px; max-width: 70vw; }
     .qf-name { margin-top: 9px; font-size: 14px; }
-    .qf-guide { margin-top: 16px; font-size: 15px; }
-    .qf-tip { margin-top: 8px; font-size: 12px; }
+    .qf-guide { font-size: 15px; }
+    .qf-tip { margin-top: 6px; font-size: 12px; }
     .bbar-btn { padding: 12px 26px; font-size: 15px; }
 }
 .hidden { display: none !important; }
