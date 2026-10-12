@@ -54,21 +54,6 @@
       "ua": "QQ/"
     },
     {
-      "key": "paypal",
-      "type": "qr",
-      "enabled": true,
-      "name": "PayPal",
-      "title": "PayPal",
-      "value": "https://paypal.me/wentianplay/",
-      "logo": "https://wentianwan.com/cdn/paypal-logo.svg",
-      "bg": "#0070ba",
-      "app": "PayPal",
-      "guide": "打开<span class=\"app\">PayPal</span><span class=\"hl\">[扫一扫]</span>",
-      "footer": "PayPal 扫码付款",
-      "showName": true,
-      "ua": ""
-    },
-    {
       "key": "icbc",
       "type": "card",
       "enabled": true,
@@ -103,6 +88,21 @@
       "app": "支付宝",
       "guide": "打开<span class=\"app\">支付宝</span><span class=\"hl\">[扫一扫]</span>",
       "footer": "支付宝扫码转账到银行卡",
+      "showName": true,
+      "ua": ""
+    },
+    {
+      "key": "paypal",
+      "type": "qr",
+      "enabled": true,
+      "name": "PayPal",
+      "title": "PayPal",
+      "value": "https://paypal.me/wentianplay/",
+      "logo": "https://wentianwan.com/cdn/paypal-logo.svg",
+      "bg": "#0070ba",
+      "app": "PayPal",
+      "guide": "打开<span class=\"app\">PayPal</span><span class=\"hl\">[扫一扫]</span>",
+      "footer": "PayPal 扫码付款",
       "showName": true,
       "ua": ""
     },
