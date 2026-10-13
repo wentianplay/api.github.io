@@ -90,7 +90,7 @@
     {
       "key": "boc",
       "type": "card",
-      "enabled": false,
+      "enabled": true,
       "name": "中国银行",
       "title": "中国银行储蓄卡",
       "bankAccount": "李文飞",
@@ -169,7 +169,7 @@
     {
       "key": "btc",
       "type": "qr",
-      "enabled": false,
+      "enabled": true,
       "name": "Bitcoin",
       "title": "Bitcoin",
       "value": "https://www.cropty.io/@sutianbin",
@@ -185,7 +185,7 @@
     {
       "key": "eth",
       "type": "qr",
-      "enabled": false,
+      "enabled": true,
       "name": "Ethereum",
       "title": "Ethereum",
       "value": "https://www.cropty.io/@sutianbin",
@@ -201,7 +201,7 @@
     {
       "key": "usdt",
       "type": "qr",
-      "enabled": false,
+      "enabled": true,
       "name": "USDT",
       "title": "USDT",
       "value": "https://www.cropty.io/@sutianbin",
