@@ -92,6 +92,21 @@
       "ua": ""
     },
     {
+      "key": "alipayhk",
+      "type": "qr",
+      "enabled": true,
+      "name": "AlipayHK",
+      "title": "支付宝香港",
+      "value": "https://qr.alipay.hk/281004010496HaJr8XpKVzTlY48ZkTU7PzAq",
+      "logo": "https://wentianwan.com/cdn/alipayhk-logo.svg",
+      "bg": "#1a73e8",
+      "app": "AlipayHK",
+      "guide": "打开<span class=\"app\">AlipayHK</span><span class=\"hl\">[扫一扫]</span>",
+      "footer": "AlipayHK 扫一扫付款",
+      "showName": true,
+      "ua": ""
+    },
+    {
       "key": "paypal",
       "type": "qr",
       "enabled": true,
