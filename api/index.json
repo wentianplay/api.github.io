@@ -152,6 +152,36 @@
       "ua": ""
     },
     {
+      "key": "bilibili",
+      "type": "qr",
+      "enabled": true,
+      "name": "bilibili",
+      "title": "bilibili",
+      "value": "https://member.bilibili.com/mall/upower-pay?mid=1607684364&levels=&upname=%E8%8B%8F%E5%A4%A9%E5%BD%AC&upurl=%2F%2Fspace.bilibili.com%2F1607684364&upavatar=https%3A%2F%2Fi0.hdslb.com%2Fbfs%2Fface%2Fb22e7fb5f7c2e73336a34c9c93ea711adf66a557.jpg&upmid=1607684364&otype=up&oid=1607684364&from=space_index&from_spmid=&spmid=333.1387.0.0",
+      "logo": "https://wentianwan.com/cdn/bilibili_logo.svg",
+      "bg": "#00aeec",
+      "app": "bilibili",
+      "guide": "打开<span class=\"app\">bilibili</span><span class=\"hl\">[扫一扫]</span>",
+      "footer": "在bilibili支持我",
+      "showName": true,
+      "ua": "bilibili"
+    },
+    {
+      "key": "afdian",
+      "type": "qr",
+      "enabled": true,
+      "name": "爱发电",
+      "title": "爱发电",
+      "value": "https://afdian.com/a/tborg",
+      "logo": "https://wentianwan.com/cdn/afdian-logo.svg",
+      "bg": "#946ce6",
+      "app": "爱发电",
+      "guide": "打开<span class=\"app\">爱发电</span><span class=\"hl\">[扫一扫]</span>",
+      "footer": "在爱发电支持我",
+      "showName": true,
+      "ua": ""
+    },
+    {
       "key": "cropty",
       "type": "qr",
       "enabled": true,
@@ -212,21 +242,6 @@
       "guide": "用<span class=\"app\">任意 BTC 钱包</span><span class=\"hl\">[扫码转账]</span>",
       "footer": "BTC 扫码转账",
       "showName": false,
-      "ua": ""
-    },
-    {
-      "key": "afdian",
-      "type": "qr",
-      "enabled": true,
-      "name": "爱发电",
-      "title": "爱发电",
-      "value": "https://afdian.com/a/tborg",
-      "logo": "https://wentianwan.com/cdn/afdian-logo.svg",
-      "bg": "#946ce6",
-      "app": "爱发电",
-      "guide": "打开<span class=\"app\">爱发电</span><span class=\"hl\">[扫一扫]</span>",
-      "footer": "在爱发电支持我",
-      "showName": true,
       "ua": ""
     }
   ]
