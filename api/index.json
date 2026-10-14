@@ -167,6 +167,21 @@
       "ua": ""
     },
     {
+      "key": "kofi",
+      "type": "qr",
+      "enabled": false,
+      "name": "Ko-fi",
+      "title": "Ko-fi",
+      "value": "https://ko-fi.com/tianbin/tip",
+      "logo": "https://wentianwan.com/cdn/kofi-logo.svg",
+      "bg": "#ff5e5b",
+      "app": "Ko-fi",
+      "guide": "打开<span class=\"app\">Ko-fi</span><span class=\"hl\">[扫一扫]</span>",
+      "footer": "Ko-fi 请我喝杯咖啡",
+      "showName": true,
+      "ua": ""
+    },
+    {
       "key": "Wise",
       "type": "qr",
       "enabled": false,
@@ -193,21 +208,6 @@
       "app": "Stripe",
       "guide": "打开<span class=\"app\">Stripe</span><span class=\"hl\">[扫一扫]</span>",
       "footer": "通过 Stripe 收款",
-      "showName": true,
-      "ua": ""
-    },
-    {
-      "key": "kofi",
-      "type": "qr",
-      "enabled": false,
-      "name": "Ko-fi",
-      "title": "Ko-fi",
-      "value": "REPLACE_ME",
-      "logo": "https://wentianwan.com/cdn/kofi-logo.svg",
-      "bg": "#ff5e5b",
-      "app": "Ko-fi",
-      "guide": "打开<span class=\"app\">Ko-fi</span><span class=\"hl\">[扫一扫]</span>",
-      "footer": "Ko-fi 请我喝杯咖啡",
       "showName": true,
       "ua": ""
     },
