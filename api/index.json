@@ -169,7 +169,7 @@
     {
       "key": "kofi",
       "type": "qr",
-      "enabled": false,
+      "enabled": true,
       "name": "Ko-fi",
       "title": "Ko-fi",
       "value": "https://ko-fi.com/tianbin/tip",
