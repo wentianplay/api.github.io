@@ -1,0 +1,65 @@
+{
+    "headImage": "https://www.baidu.com/img/flexible/logo/pc/result.png",
+    "setBingBackground":true,
+    "searchEngine": {
+        "selected": "bing",
+        "engines": {
+             "bing": {
+                "name": "Bing",
+                "mainColor": "#008373",
+                "textColor": "white",
+                "icon": "https://wentianwan.com/cdn/bing-logo.svg",
+                "api": "https://cn.bing.com/search?q=%keyword%",
+                "advice_func":"bing_advice"
+            },
+            "google": {
+                "name": "Google",
+                "mainColor": "#ff6840",
+                "textColor": "white",
+                "icon": "https://wentianwan.com/cdn/google-logo.svg",
+                "api": "https://www.google.com/search?q=%keyword%",
+                "advice_func":"google_advice"
+            },
+            "baidu": {
+                "name": "Baidu",
+                "mainColor": "#2932E1",
+                "textColor": "white",
+                "icon": "https://wentianwan.com/cdn/baidu-logo.svg",
+                "api": "https://www.baidu.com/s?wd=%keyword%",
+                "advice_func":"baidu_advice"
+            },
+            "bilibili": {
+                "name": "bilibili",
+                "mainColor": "#FB7299",
+                "textColor": "white",
+                "icon": "https://wentianwan.com/cdn/bilibili-logo.svg",
+                "api": "https://search.bilibili.com/all?keyword=%keyword%",
+                "advice_func":"bilibili_advice"
+            },
+            "zhihu": {
+                "name": "Zhihu",
+                "mainColor": "#0066FF",
+                "textColor": "white",
+                "icon": "https://wentianwan.com/cdn/zhihu-logo.svg",
+                "api": "https://www.zhihu.com/search?type=content&q=%keyword%",
+                "advice_func":"zhihu_advice"
+            },
+            "youtube": {
+                "name": "YouTube",
+                "mainColor": "#434951",
+                "textColor": "white",
+                "icon": "https://wentianwan.com/cdn/youtube-logo.svg",
+                "api": "https://www.youtube.com/results?search_query=%keyword%",
+                "advice_func":"youtube_advice"
+            },
+            "github": {
+                "name": "GitHub",
+                "mainColor": "#434951",
+                "textColor": "white",
+                "icon": "https://wentianwan.com/cdn/github-logo.svg",
+                "api": "https://github.com/search?q=%keyword%",
+                "advice_func":"github_advice"
+            }
+        }
+    }
+}
