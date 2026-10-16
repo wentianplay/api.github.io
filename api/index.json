@@ -83,7 +83,7 @@
       "bg": "#c7000b",
       "app": "支付宝",
       "guide": "打开<span class=\"app\">支付宝</span><span class=\"hl\">[扫一扫]</span>",
-      "footer": "支付宝扫码转账到工商卡",
+      "footer": "支付宝扫码转账到工行卡",
       "showName": true,
       "ua": ""
     },
